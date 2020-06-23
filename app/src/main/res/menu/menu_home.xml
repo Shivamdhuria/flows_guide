@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/clearAll"
+        android:title="Clear All" />
+    <item
+        android:id="@+id/configOne"
+        android:title="Configuration One" />
+    <item
+        android:id="@+id/configTwo"
+        android:title="Configuration Two" />
+</menu>
