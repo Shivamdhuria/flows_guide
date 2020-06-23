@@ -2,8 +2,7 @@ package com.example.flows.main
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
+import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.flows.R
@@ -34,17 +33,22 @@ class MainActivity : DaggerAppCompatActivity() {
         recycler.adapter = adapter
         subscribeObservers()
         initListeners()
+        viewModel.setSearch("")
     }
 
     private fun initListeners() {
-//        toggleButtonGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
-//            if (isChecked) {
-//                when (checkedId) {
-//                    R.id.buttonAsync -> fetchImagesAsynchronously()
-//                    R.id.buttonSync -> fetchImagesSynchronously()
-//                }
-//            }
-//        }
+
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener, androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { viewModel.setSearch(it) }
+                return true
+            }
+        }
+        )
 
         loadMore.setOnClickListener {
             viewModel.fetchDogsFlow()
@@ -98,13 +102,7 @@ class MainActivity : DaggerAppCompatActivity() {
 
         viewModel.dogListLiveData.observe(this, Observer {
             Log.e("liveDataResult......", it.toString())
-            val dogList = mutableListOf<String>()
-            it.forEach {
-                dogList.add(it.breed)
-            }
-            Log.e("dog list", dogList.toString())
             adapter.submitList(it)
-
         })
 
         viewModel.liveDateFetch.observe(this, Observer {
@@ -123,25 +121,31 @@ class MainActivity : DaggerAppCompatActivity() {
         viewModel.fetchDogsFlow()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu_home, menu)
-
-        // return true so that the menu pop up is opened
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.clearAll -> {
-                viewModel.clearCache()
-                true
-            }
-
-            R.id.configOne ->
-                true
-            else -> super.onContextItemSelected(item)
-        }
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        val inflater = menuInflater
+//        inflater.inflate(R.menu.menu_home, menu)
+//
+//        // return true so that the menu pop up is opened
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            R.id.clearAll -> {
+//                viewModel.clearCache()
+//                true
+//            }
+//
+//            R.id.configOne -> {
+//                viewModel.setSearch("Dachshund")
+//                true
+//            }
+//            R.id.configTwo -> {
+//                viewModel.setSearch("zz")
+//                true
+//            }
+//            else -> super.onContextItemSelected(item)
+//        }
+//    }
 }
 

@@ -2,7 +2,14 @@ package com.example.flows.main
 
 import androidx.lifecycle.*
 import com.example.flows.main.data.Dog
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicInteger
 import javax.inject.Inject
 
@@ -40,8 +47,30 @@ class MainActivityViewModel @Inject constructor(private val mainActivityReposito
         _snackbar.value = null
     }
 
-    @ExperimentalCoroutinesApi
-    val dogListLiveData = mainActivityRepository.dogListFlow.asLiveData()
+
+    //without channel
+//    @ExperimentalCoroutinesApi
+//    val dogListLiveData = mainActivityRepository.dogListFlow.asLiveData()
+
+    //with channel
+    private val searchChanel = ConflatedBroadcastChannel<String>()
+
+    val dogListLiveData = searchChanel.asFlow()
+        .flatMapLatest { search ->
+            //use this as we don't want flows of flows
+
+            mainActivityRepository.getSearchedDogs(search)
+        }
+//        .onEach {
+//            _spinner.value = false
+//        }
+        .catch { throwable ->
+            _snackbar.value = throwable.message
+        }.asLiveData()
+
+    fun setSearch(search: String) {
+        searchChanel.offer(search)
+    }
 
 
     val liveDateFetch = _inputLiveData.switchMap {
@@ -78,6 +107,9 @@ class MainActivityViewModel @Inject constructor(private val mainActivityReposito
             mainActivityRepository.clearCacheData()
         }
     }
+
+
+//Connect Using Channel
 
 
 }
