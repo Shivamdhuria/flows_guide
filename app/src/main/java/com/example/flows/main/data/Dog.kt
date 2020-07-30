@@ -8,5 +8,4 @@ data class Dog(
     @PrimaryKey
     val breed : String,
     val imageUrl: String?,
-    var isTopDog: Boolean = false
-)
+    var isTopDog: Boolean = false)

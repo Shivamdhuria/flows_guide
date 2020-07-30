@@ -1,6 +1,5 @@
 package com.example.flows.main.network
 
-import android.util.Log
 import com.example.flows.main.data.Dog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -21,42 +20,11 @@ class RemoteDataSource @Inject constructor(private val api: MainActivityApi) {
         return breedName.replace(Regex("-"), " ").capitalize()
     }
 
-
-    //Emit all At once
-//    suspend fun favoritesSortOrder(): List<String> = withContext(Dispatchers.IO) {
-//        delay(10000)
-//        listOf<String>(
-//            "Setter gordon", "Terrier patterdale", "Germanshepherd", "Ridgeback rhodesian", "Dachshund", "Pomeranian",
-//            "Pekinese", "Redbone", "Lhasa", "Chow", "Retriever curly", "Kelpie", "Terrier silky", "Spaniel welsh", "Otterhound"
-//        )
-//    }
-
-
-    fun favoritesSortOrder() = flow<List<String>> {
-
-        val allDogList = listOf<String>(
-            "Setter gordon","Terrier patterdale","Germanshepherd", "Ridgeback rhodesian", "Dachshund", "Pomeranian",
-            "Pekinese", "Redbone", "Lhasa", "Chow","Retriever curly", "Kelpie", "Terrier silky", "Spaniel welsh", "Otterhound",
-            "shepherd",
-            "basenji",
-            "beagle",
-            "bluetick",
-            "borzoi",
-            "bouvier",
-            "boxer",
-            "brabancon",
-            "briard",
-            "buhund",
-            "norwegian"
-        )
-
-
-
+    fun favoritesSortOrder() = flow {
         while (true) {
-            val list = allDogList.shuffled().subList(0, 20)
-            Log.e("Fav Emit SOrt....", list.toString())
+            val list = getDogs().map { it.capitalize() }.shuffled().subList(0, 50)
             emit(list)
-            delay(5000)
+            delay(2000)
         }
     }
 

@@ -7,117 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".main.MainActivity">
 
-    <!--    <androidx.core.widget.NestedScrollView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:scrollbars="vertical"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent">-->
-
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:gravity="center_vertical|center_horizontal"-->
-    <!--            android:orientation="vertical">-->
-
-    <!--            <TextView-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_margin="10dp"-->
-    <!--                android:text="Dogs of The Day"-->
-    <!--                android:textAlignment="center"-->
-    <!--                android:textColor="#000000"-->
-    <!--                android:textSize="20dp" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/statusTop"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_margin="0dp"-->
-    <!--                android:text="Async"-->
-    <!--                android:textAlignment="center"-->
-    <!--                android:textSize="15dp" />-->
-
-    <!--            <LinearLayout-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:orientation="horizontal">-->
-
-    <!--                <include-->
-    <!--                    android:id="@+id/dog_one"-->
-    <!--                    layout="@layout/item_dog_of_the_day"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_margin="10dp"-->
-    <!--                    android:layout_weight="1" />-->
-    <!--            </LinearLayout>-->
-
-    <!--            <View-->
-    <!--                android:layout_marginTop="30dp"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:background="@color/colorAccent"-->
-    <!--                android:layout_height="2dp"/>-->
-
-    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content">-->
-
-    <!--                <com.google.android.material.button.MaterialButtonToggleGroup-->
-    <!--                    android:id="@+id/toggleButtonGroup"-->
-    <!--                    android:layout_width="match_parent"-->
-    <!--                    android:layout_height="0dp"-->
-    <!--                    app:singleSelection="true"-->
-    <!--                    android:layout_marginTop="30dp"-->
-    <!--                    android:layout_weight="2"-->
-    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                    app:layout_constraintStart_toStartOf="parent"-->
-    <!--                    app:layout_constraintTop_toTopOf="parent">-->
-
-    <!--                    <Button-->
-    <!--                        android:id="@+id/buttonSync"-->
-    <!--                        style="?attr/materialButtonOutlinedStyle"-->
-    <!--                        android:layout_width="wrap_content"-->
-    <!--                        android:layout_height="wrap_content"-->
-    <!--                        android:text="Synchronous" />-->
-
-    <!--                    <Button-->
-    <!--                        android:id="@+id/buttonAsync"-->
-    <!--                        style="?attr/materialButtonOutlinedStyle"-->
-    <!--                        android:layout_width="wrap_content"-->
-    <!--                        android:layout_height="wrap_content"-->
-    <!--                        android:text="Asynchronous" />-->
-    <!--                </com.google.android.material.button.MaterialButtonToggleGroup>-->
-    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/time"-->
-    <!--                android:text="Select an option from above to Start Loading"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_margin="20dp"-->
-    <!--                android:textAlignment="center" />-->
-
-    <!--            <androidx.recyclerview.widget.RecyclerView-->
-    <!--                android:id="@+id/recycler"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:nestedScrollingEnabled="false"-->
-    <!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-    <!--                app:layout_constraintTop_toBottomOf="@+id/dogName" />-->
-    <!--        </LinearLayout>-->
-    <!--    </androidx.core.widget.NestedScrollView>-->
-
-    <!--    <ProgressBar-->
-    <!--        android:id="@+id/spinner"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_gravity="center"-->
-    <!--        android:visibility="gone"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
+        android:theme="@style/AppSearchView"
+        android:layout_width="match_parent"
+        app:queryHint="Search Breed"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -130,7 +27,7 @@
         app:layout_constraintBottom_toTopOf="@+id/loadMore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search"
         app:spanCount="3"
         tools:context="com.raywenderlich.android.episodes.ui.MainActivity"
         tools:listitem="@layout/item_doggo" />

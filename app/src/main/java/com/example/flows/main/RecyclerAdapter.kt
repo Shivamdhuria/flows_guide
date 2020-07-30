@@ -32,7 +32,6 @@ class RecyclerAdapter : ListAdapter<Dog, RecyclerAdapter.UserDateViewHolder>(Use
         override fun areContentsTheSame(oldItem: Dog, newItem: Dog): Boolean {
             return oldItem == newItem
         }
-
     }
 
     inner class UserDateViewHolder(override val containerView: View) :
