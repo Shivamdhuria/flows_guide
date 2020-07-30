@@ -2,7 +2,7 @@ package com.example.flows.main
 
 import androidx.lifecycle.*
 import com.example.flows.main.data.Dog
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
@@ -14,9 +14,6 @@ import java.util.concurrent.atomic.AtomicInteger
 import javax.inject.Inject
 
 class MainActivityViewModel @Inject constructor(private val mainActivityRepository: MainActivityRepository) : ViewModel() {
-    private companion object {
-        private const val DELAY_BETWEEN_DOGS_IN_MS = 10000L
-    }
 
     private val parentJob = SupervisorJob()
     private val _dogList = MutableLiveData<List<Dog>>()
@@ -27,10 +24,6 @@ class MainActivityViewModel @Inject constructor(private val mainActivityReposito
     private val _spinner = MutableLiveData(false)
     private val _topDogsAsync = MutableLiveData<List<Dog>>()
     private val atomicInteger = AtomicInteger()
-
-    init {
-//        loadTopTwoDogsAsync()
-    }
 
     val dogList: LiveData<List<Dog>>
         get() = _dogList
@@ -47,51 +40,29 @@ class MainActivityViewModel @Inject constructor(private val mainActivityReposito
         _snackbar.value = null
     }
 
-
-    //without channel
-//    @ExperimentalCoroutinesApi
-//    val dogListLiveData = mainActivityRepository.dogListFlow.asLiveData()
-
-    //with channel
+    @ExperimentalCoroutinesApi
     private val searchChanel = ConflatedBroadcastChannel<String>()
 
+    @ExperimentalCoroutinesApi
     val dogListLiveData = searchChanel.asFlow()
         .flatMapLatest { search ->
-            //use this as we don't want flows of flows
-
+            //We use flatMapLatest as we don't want flows of flows and we only want to query the latest searched string in case user types
+            // in a new query before the earlier one is finished processing.
             mainActivityRepository.getSearchedDogs(search)
         }
-//        .onEach {
-//            _spinner.value = false
-//        }
         .catch { throwable ->
             _snackbar.value = throwable.message
         }.asLiveData()
 
-    fun setSearch(search: String) {
+    fun setSearchQuery(search: String) {
         searchChanel.offer(search)
     }
-
 
     val liveDateFetch = _inputLiveData.switchMap {
         liveData {
             emit(mainActivityRepository.tryFetchAndUpdate())
         }
     }
-
-    private fun loadData(block: suspend () -> Unit): Job {
-        return viewModelScope.launch {
-            try {
-                _spinner.value = true
-                block()
-            } catch (error: Throwable) {
-                _snackbar.value = error.message
-            } finally {
-                _spinner.value = false
-            }
-        }
-    }
-
 
     override fun onCleared() {
         super.onCleared()
@@ -107,11 +78,6 @@ class MainActivityViewModel @Inject constructor(private val mainActivityReposito
             mainActivityRepository.clearCacheData()
         }
     }
-
-
-//Connect Using Channel
-
-
 }
 
 

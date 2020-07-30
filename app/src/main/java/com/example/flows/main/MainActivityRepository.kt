@@ -15,46 +15,21 @@ import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class MainActivityRepository @Inject constructor(
-    private val dogDao: DogDao,
-    private val dogsRDS: RemoteDataSource,
-    private val api: MainActivityApi
-) {
-
-    @ExperimentalCoroutinesApi
-    val dogListFlow: Flow<List<Dog>>
-        get() = dogDao.loadAllEpisodesFlow()
-            .combine(topBreedsFlow) { dogs, topDogs ->
-                dogs.applyToDog(topDogs)
-            }
-            .flowOn(Dispatchers.Default)
-            .conflate()
+class MainActivityRepository @Inject constructor(private val dogDao: DogDao, private val dogsRDS: RemoteDataSource, private val api: MainActivityApi) {
 
     @ExperimentalCoroutinesApi
     fun getSearchedDogs(search: String): Flow<List<Dog>> {
-        return dogDao.getEpisodesForTrilogyNumberFlow(search)
+        return dogDao.getSearchedDogs(search) //Get searched dogs from Room Database
+            //Combine the result with another flow
             .combine(topBreedsFlow) { dogs, topDogs ->
                 dogs.applyToDog(topDogs)
             }
             .flowOn(Dispatchers.Default)
+            //Return the latest values
             .conflate()
     }
 
-    suspend fun tryUpdateDogCache() {
-        val dogApiResponse = dogsRDS.fetchRandomDog()
-        dogDao.save(dogApiResponse)
-    }
-
-
-    //emit at once
-//    private val topBreedsFlow = flow {
-//
-//        val topBreedsList = dogsRDS.favoritesSortOrder()
-//        emit(topBreedsList)
-//    }
-
     private val topBreedsFlow = dogsRDS.favoritesSortOrder()
-
 
     suspend fun tryFetchAndUpdate(): ResultWrapper {
 
@@ -76,7 +51,6 @@ class MainActivityRepository @Inject constructor(
         val breedName = message.substringAfter("breeds/").substringBefore("/")
         return breedName.replace(Regex("-"), " ").capitalize()
     }
-
 
     private fun List<Dog>.applyToDog(favoritesSortOrder: List<String>): List<Dog> {
         return this.map {

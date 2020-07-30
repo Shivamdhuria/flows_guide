@@ -1,7 +1,6 @@
 package com.example.flows.main
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 import kotlin.LazyThreadSafetyMode.NONE
-
 
 class MainActivity : DaggerAppCompatActivity() {
 
@@ -33,7 +31,7 @@ class MainActivity : DaggerAppCompatActivity() {
         recycler.adapter = adapter
         subscribeObservers()
         initListeners()
-        viewModel.setSearch("")
+        viewModel.setSearchQuery("")
     }
 
     private fun initListeners() {
@@ -44,36 +42,18 @@ class MainActivity : DaggerAppCompatActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let { viewModel.setSearch(it) }
+                newText?.let { viewModel.setSearchQuery(it) }
                 return true
             }
         }
         )
-
         loadMore.setOnClickListener {
             viewModel.fetchDogsFlow()
         }
     }
 
-//    private fun fetchImagesSynchronously() {
-//        viewModel.loadDogListSynchronously()
-//    }
-//
-//    private fun fetchImagesAsynchronously() {
-//        viewModel.loadDogListAsynchronously()
-//    }
-
     @ExperimentalCoroutinesApi
     private fun subscribeObservers() {
-//        viewModel.spinner.observe(this, Observer { show ->
-//            spinner.visibility = if (show) VISIBLE else GONE
-//        })
-//
-//        viewModel.status.observe(this, Observer { it ->
-//            time.text = it
-//        })
-
-
         viewModel.snackbar.observe(this, Observer { text ->
             text?.let {
                 Snackbar.make(root_layout, text, Snackbar.LENGTH_SHORT).show()
@@ -81,27 +61,7 @@ class MainActivity : DaggerAppCompatActivity() {
             }
         })
 
-
-//        viewModel.dogList.observe(this, Observer {
-//            val list = it as List<Dog>
-//            adapter.submitList(list)
-//        })
-
-//        viewModel.topTwoDogs.observe(this, Observer {
-//            when (it) {
-//                is GeneralResult.Progress -> {
-//                }
-//                is GeneralResult.SuccessGeneric<*> -> {
-//                    updateTopTwoDogs(it.data as List<Dog>)
-//                }
-//                is GeneralResult.ErrorType -> {
-//                }
-//            }
-//        })
-
-
         viewModel.dogListLiveData.observe(this, Observer {
-            Log.e("liveDataResult......", it.toString())
             adapter.submitList(it)
         })
 

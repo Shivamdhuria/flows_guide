@@ -20,17 +20,6 @@ class RemoteDataSource @Inject constructor(private val api: MainActivityApi) {
         return breedName.replace(Regex("-"), " ").capitalize()
     }
 
-
-    //Emit all At once
-//    suspend fun favoritesSortOrder(): List<String> = withContext(Dispatchers.IO) {
-//        delay(10000)
-//        listOf<String>(
-//            "Setter gordon", "Terrier patterdale", "Germanshepherd", "Ridgeback rhodesian", "Dachshund", "Pomeranian",
-//            "Pekinese", "Redbone", "Lhasa", "Chow", "Retriever curly", "Kelpie", "Terrier silky", "Spaniel welsh", "Otterhound"
-//        )
-//    }
-
-
     fun favoritesSortOrder() = flow {
         while (true) {
             val list = getDogs().map { it.capitalize() }.shuffled().subList(0, 50)
