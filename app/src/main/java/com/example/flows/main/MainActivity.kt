@@ -30,7 +30,6 @@ class MainActivity : DaggerAppCompatActivity() {
         recycler.adapter = adapter
         subscribeObservers()
         initListeners()
-
         viewModel.setSearchQuery("")
     }
 
