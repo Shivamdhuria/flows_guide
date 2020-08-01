@@ -15,7 +15,11 @@ import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class MainActivityRepository @Inject constructor(private val dogDao: DogDao, private val dogsRDS: RemoteDataSource, private val api: MainActivityApi) {
+class MainActivityRepository @Inject constructor(
+    private val dogDao: DogDao,
+    private val dogsRDS: RemoteDataSource,
+    private val api: MainActivityApi
+) {
 
     @ExperimentalCoroutinesApi
     fun getSearchedDogs(search: String): Flow<List<Dog>> {
