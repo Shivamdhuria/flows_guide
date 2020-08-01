@@ -13,7 +13,6 @@ import com.example.flows.util.ImageLoader
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_doggo.view.*
 
-
 class RecyclerAdapter : ListAdapter<Dog, RecyclerAdapter.UserDateViewHolder>(UserDataAdapterListDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserDateViewHolder =

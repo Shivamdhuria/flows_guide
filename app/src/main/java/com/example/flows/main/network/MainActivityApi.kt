@@ -7,5 +7,4 @@ interface MainActivityApi {
 
     @GET("breeds/image/random")
     suspend fun getRandomImageByUrl(): ApiResponse<String>
-
 }

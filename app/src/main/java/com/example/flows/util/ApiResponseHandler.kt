@@ -1,7 +1,6 @@
 package com.example.flows.util
 
-
-//abstract class ApiResponseHandler<Data>(private val response: GenericApiResponse<Data?>) {
+// abstract class ApiResponseHandler<Data>(private val response: GenericApiResponse<Data?>) {
 //
 //    private val TAG: String = "AppDebug"
 //
@@ -18,9 +17,9 @@ package com.example.flows.util
 //
 //    abstract suspend fun handleSuccessResponse(resultObj: Data?): GenericApiResponse<Any>
 //
-//}
+// }
 
-//return when (response) {
+// return when (response) {
 //
 //            is GenericApiResponse.GenericErrorType -> { }
 //

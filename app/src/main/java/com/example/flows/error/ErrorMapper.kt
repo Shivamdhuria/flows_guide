@@ -1,11 +1,8 @@
 package com.example.flows.error
 
-
 class ErrorMapper {
 
-    internal companion object {
-
-    }
+    internal companion object
 
 //    @StringRes
 //    fun mapOf(error: String): Int {

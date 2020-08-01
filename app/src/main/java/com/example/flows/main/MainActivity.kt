@@ -24,7 +24,6 @@ class MainActivity : DaggerAppCompatActivity() {
     }
     private val adapter by lazy(NONE) { RecyclerAdapter() }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -108,4 +107,3 @@ class MainActivity : DaggerAppCompatActivity() {
 //        }
 //    }
 }
-

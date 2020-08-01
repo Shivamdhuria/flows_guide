@@ -44,19 +44,20 @@ class MainActivityViewModel @Inject constructor(private val mainActivityReposito
     private val searchChanel = ConflatedBroadcastChannel<String>()
 
     @ExperimentalCoroutinesApi
+    fun setSearchQuery(search: String) {
+        searchChanel.offer(search)
+    }
+
+    @ExperimentalCoroutinesApi
     val dogListLiveData = searchChanel.asFlow()
         .flatMapLatest { search ->
-            //We use flatMapLatest as we don't want flows of flows and we only want to query the latest searched string in case user types
+            // We use flatMapLatest as we don't want flows of flows and we only want to query the latest searched string in case user types
             // in a new query before the earlier one is finished processing.
             mainActivityRepository.getSearchedDogs(search)
         }
         .catch { throwable ->
             _snackbar.value = throwable.message
         }.asLiveData()
-
-    fun setSearchQuery(search: String) {
-        searchChanel.offer(search)
-    }
 
     val liveDateFetch = _inputLiveData.switchMap {
         liveData {
@@ -79,6 +80,3 @@ class MainActivityViewModel @Inject constructor(private val mainActivityReposito
         }
     }
 }
-
-
-
