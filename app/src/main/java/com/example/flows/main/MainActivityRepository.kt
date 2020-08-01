@@ -15,17 +15,21 @@ import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class MainActivityRepository @Inject constructor(private val dogDao: DogDao, private val dogsRDS: RemoteDataSource, private val api: MainActivityApi) {
+class MainActivityRepository @Inject constructor(
+    private val dogDao: DogDao,
+    private val dogsRDS: RemoteDataSource,
+    private val api: MainActivityApi
+) {
 
     @ExperimentalCoroutinesApi
     fun getSearchedDogs(search: String): Flow<List<Dog>> {
-        return dogDao.getSearchedDogs(search) //Get searched dogs from Room Database
-            //Combine the result with another flow
+        return dogDao.getSearchedDogs(search) // Get searched dogs from Room Database
+            // Combine the result with another flow
             .combine(topBreedsFlow) { dogs, topDogs ->
                 dogs.applyToDog(topDogs)
             }
             .flowOn(Dispatchers.Default)
-            //Return the latest values
+            // Return the latest values
             .conflate()
     }
 
@@ -63,7 +67,6 @@ class MainActivityRepository @Inject constructor(private val dogDao: DogDao, pri
         try {
             dogDao.deleteCache()
         } catch (error: Throwable) {
-
         }
     }
 }

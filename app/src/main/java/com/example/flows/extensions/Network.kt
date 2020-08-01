@@ -9,7 +9,7 @@ import retrofit2.HttpException
 import java.io.IOException
 
 suspend fun <T> safeApiCall(dispatcher: CoroutineDispatcher, apiCall: suspend () -> T): ResultWrapper {
-    //Although suspend modifier for retrofit is being used, withContext() is still needed for testing in future
+    // Although suspend modifier for retrofit is being used, withContext() is still needed for testing in future
     return withContext(dispatcher) {
         try {
             ResultWrapper.Success(apiCall.invoke())
@@ -22,7 +22,7 @@ suspend fun <T> safeApiCall(dispatcher: CoroutineDispatcher, apiCall: suspend ()
                     ResultWrapper.GenericError(code, errorResponse)
                 }
                 else -> {
-                    ResultWrapper.GenericError(null,null)
+                    ResultWrapper.GenericError(null, null)
                 }
             }
         }
@@ -40,15 +40,15 @@ private fun convertErrorBody(throwable: HttpException): ErrorResponse? {
     }
 }
 
-//internal fun <T, L> GenericApiResponse.handleApiResponse(
+// internal fun <T, L> GenericApiResponse.handleApiResponse(
 //    success: (GenericApiResponse) -> L,
 //    error: (GenericApiResponse) -> L
-//): L {
+// ): L {
 //    return when (this) {
 //        is Success<*> -> success(this)
 //        else -> error(this)
 //    }
-//}
+// }
 //
 suspend fun handleException(throwable: Throwable): ResultWrapper {
     return when (throwable) {

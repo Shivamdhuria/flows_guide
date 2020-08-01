@@ -12,7 +12,7 @@ internal class MainActivityModule {
 
     @Provides
     fun provideMainActivityRepository(dogDao: DogDao, dogRDS: RemoteDataSource, api: MainActivityApi): MainActivityRepository =
-        MainActivityRepository(dogDao,dogRDS,api)
+        MainActivityRepository(dogDao, dogRDS, api)
 
     @Provides
     fun provideEditProfileApi(retrofit: Retrofit): MainActivityApi = retrofit.create(MainActivityApi::class.java)

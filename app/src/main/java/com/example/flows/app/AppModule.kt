@@ -18,7 +18,6 @@ import javax.inject.Singleton
 @Module
 internal class AppModule {
 
-
     @Singleton
     @Provides
     fun provideContext(application: CoroutineApplication): Context = application.applicationContext

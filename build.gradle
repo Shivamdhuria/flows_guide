@@ -2,10 +2,10 @@
 buildscript {
     ext.kotlin_version = "1.3.72"
     ext.lifecycle_version = '2.2.0'
-    ext.retrofit_version = '2.6.2'
+    ext.retrofit_version = '2.9.0'
     ext.okhttp_version = '3.10.0'
     ext.gson_version = '2.8.6'
-    ext.coroutines_version = "1.3.0-RC"
+    ext.coroutines_version = "1.3.4"
     ext.dagger_version = '2.23.2'
     ext.glide_version = '4.10.0'
     def lifecycle_version = "2.2.0-rc02"
@@ -24,10 +24,20 @@ buildscript {
     }
 }
 
+plugins {
+    id "org.jlleitschuh.gradle.ktlint" version "8.2.0"
+}
+
 allprojects {
     repositories {
         google()
         jcenter()
+    }
+}
+
+subprojects {
+    apply {
+        plugin("org.jlleitschuh.gradle.ktlint")
     }
 }
 
