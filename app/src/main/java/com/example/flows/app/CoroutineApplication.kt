@@ -1,15 +1,20 @@
 package com.example.flows.app
 
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-internal class CoroutineApplication : DaggerApplication() {
+@HiltAndroidApp
+class CoroutineApplication : Application()
 
-    override fun onCreate() {
-        super.onCreate()
-    }
+// Pre HILT using Dagger
 
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.factory().create(this)
-    }
-}
+// internal class CoroutineApplication : DaggerApplication() {
+//
+//     override fun onCreate() {
+//         super.onCreate()
+//     }
+//
+//     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+//         return DaggerAppComponent.factory().create(this)
+//     }
+// }
