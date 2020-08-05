@@ -12,19 +12,9 @@ interface DogDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(dog: Dog)
 
-
     @Query("SELECT * FROM dog")
     fun loadAllEpisodesFlow(): Flow<List<Dog>>
 
     @Query("DELETE FROM DOG ")
     suspend fun deleteCache()
-
-    //Using Flows
-
-    @Query("SELECT * FROM dog WHERE breed LIKE '%' || :search || '%'")
-    fun getEpisodesForTrilogyNumberFlow(search: String?): Flow<List<Dog>>
-
-
-//  @Query("SELECT * FROM episode WHERE trilogy = :trilogyNumber ORDER BY number")
-//  fun getEpisodesForTrilogyNumberFlow(trilogyNumber: Int ): Flow<List<Episode>>
 }

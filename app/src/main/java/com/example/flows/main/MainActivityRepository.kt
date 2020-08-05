@@ -30,31 +30,7 @@ class MainActivityRepository @Inject constructor(
             .flowOn(Dispatchers.Default)
             .conflate()
 
-    @ExperimentalCoroutinesApi
-    fun getSearchedDogs(search: String): Flow<List<Dog>> {
-        return dogDao.getEpisodesForTrilogyNumberFlow(search)
-            .combine(topBreedsFlow) { dogs, topDogs ->
-                dogs.applyToDog(topDogs)
-            }
-            .flowOn(Dispatchers.Default)
-            .conflate()
-    }
-
-    suspend fun tryUpdateDogCache() {
-        val dogApiResponse = dogsRDS.fetchRandomDog()
-        dogDao.save(dogApiResponse)
-    }
-
-
-    //emit at once
-//    private val topBreedsFlow = flow {
-//
-//        val topBreedsList = dogsRDS.favoritesSortOrder()
-//        emit(topBreedsList)
-//    }
-
     private val topBreedsFlow = dogsRDS.favoritesSortOrder()
-
 
     suspend fun tryFetchAndUpdate(): ResultWrapper {
 
@@ -77,7 +53,6 @@ class MainActivityRepository @Inject constructor(
         return breedName.replace(Regex("-"), " ").capitalize()
     }
 
-
     private fun List<Dog>.applyToDog(favoritesSortOrder: List<String>): List<Dog> {
         return this.map {
             val isTopDog = favoritesSortOrder.contains(it.breed.capitalize())
@@ -89,7 +64,6 @@ class MainActivityRepository @Inject constructor(
         try {
             dogDao.deleteCache()
         } catch (error: Throwable) {
-
         }
     }
 }

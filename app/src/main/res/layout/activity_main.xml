@@ -7,19 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".main.MainActivity">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search"
-        android:theme="@style/AppSearchView"
-        android:layout_width="match_parent"
-        app:queryHint="Search Breed"
-        android:layout_height="150dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingStart="@dimen/card_side_margin"
         android:paddingEnd="@dimen/card_side_margin"
@@ -27,7 +18,7 @@
         app:layout_constraintBottom_toTopOf="@+id/loadMore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search"
+        app:layout_constraintTop_toBottomOf="parent"
         app:spanCount="3"
         tools:context="com.raywenderlich.android.episodes.ui.MainActivity"
         tools:listitem="@layout/item_doggo" />
