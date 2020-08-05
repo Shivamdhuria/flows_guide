@@ -12,7 +12,6 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import javax.inject.Inject
 import kotlin.LazyThreadSafetyMode.NONE
 
 // Adds this to dagger graph so we can inject dependencies in it
@@ -21,9 +20,6 @@ class MainActivity : AppCompatActivity() {
 // class MainActivity : DaggerAppCompatActivity() {
 
     private val viewModel: MainActivityViewModel by viewModels()
-
-    @Inject
-    lateinit var random: String
 
     private val adapter by lazy(NONE) { RecyclerAdapter() }
 
@@ -34,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         subscribeObservers()
         initListeners()
         viewModel.setSearchQuery("")
-        showToast(random)
     }
 
     private fun initListeners() {
