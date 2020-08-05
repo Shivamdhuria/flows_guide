@@ -1,5 +1,6 @@
 package com.example.flows.main
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.example.flows.main.data.Dog
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -11,9 +12,8 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicInteger
-import javax.inject.Inject
 
-class MainActivityViewModel @Inject constructor(private val mainActivityRepository: MainActivityRepository) : ViewModel() {
+class MainActivityViewModel @ViewModelInject constructor(private val mainActivityRepository: MainActivityRepository) : ViewModel() {
 
     private val parentJob = SupervisorJob()
     private val _dogList = MutableLiveData<List<Dog>>()
@@ -50,14 +50,14 @@ class MainActivityViewModel @Inject constructor(private val mainActivityReposito
 
     @ExperimentalCoroutinesApi
     val dogListLiveData = searchChanel.asFlow()
-        .flatMapLatest { search ->
-            // We use flatMapLatest as we don't want flows of flows and we only want to query the latest searched string in case user types
-            // in a new query before the earlier one is finished processing.
-            mainActivityRepository.getSearchedDogs(search)
-        }
-        .catch { throwable ->
-            _snackbar.value = throwable.message
-        }.asLiveData()
+            .flatMapLatest { search ->
+                // We use flatMapLatest as we don't want flows of flows and we only want to query the latest searched string in case user types
+                // in a new query before the earlier one is finished processing.
+                mainActivityRepository.getSearchedDogs(search)
+            }
+            .catch { throwable ->
+                _snackbar.value = throwable.message
+            }.asLiveData()
 
     val liveDateFetch = _inputLiveData.switchMap {
         liveData {

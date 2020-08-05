@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 29
@@ -71,11 +72,11 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.2.2'
 
     // Dagger
-    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger_version"
-    implementation "com.google.dagger:dagger:$rootProject.dagger_version"
-    implementation "com.google.dagger:dagger-android:$rootProject.dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger_version"
+//    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
+//    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger_version"
+//    implementation "com.google.dagger:dagger:$rootProject.dagger_version"
+//    implementation "com.google.dagger:dagger-android:$rootProject.dagger_version"
+//    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger_version"
 
     implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
@@ -99,4 +100,11 @@ dependencies {
     kapt "androidx.room:room-compiler:$rootProject.room_version"
     implementation "androidx.room:room-runtime:$rootProject.room_version"
     implementation "androidx.room:room-ktx:$rootProject.room_version"
+
+
+    // Hilt dependencies
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
 }

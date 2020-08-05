@@ -2,26 +2,25 @@ package com.example.flows.main
 
 import android.os.Bundle
 import android.widget.SearchView
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.flows.R
 import com.example.flows.error.ResultWrapper
 import com.example.flows.extensions.showToast
 import com.google.android.material.snackbar.Snackbar
-import dagger.android.support.DaggerAppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import javax.inject.Inject
 import kotlin.LazyThreadSafetyMode.NONE
 
-class MainActivity : DaggerAppCompatActivity() {
+// Adds this to dagger graph so we can inject dependencies in it
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
+// class MainActivity : DaggerAppCompatActivity() {
 
-    @Inject
-    internal lateinit var factory: ViewModelProvider.Factory
+    private val viewModel: MainActivityViewModel by viewModels()
 
-    private val viewModel by lazy(NONE) {
-        ViewModelProvider(this, factory).get(MainActivityViewModel::class.java)
-    }
     private val adapter by lazy(NONE) { RecyclerAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +34,8 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private fun initListeners() {
 
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener, androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+                androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }
