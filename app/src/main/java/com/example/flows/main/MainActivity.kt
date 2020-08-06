@@ -1,5 +1,7 @@
 package com.example.flows.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.SearchView
 import androidx.activity.viewModels
@@ -14,13 +16,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlin.LazyThreadSafetyMode.NONE
 
-// Adds this to dagger graph so we can inject dependencies in it
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-// class MainActivity : DaggerAppCompatActivity() {
+
+    internal companion object {
+        operator fun invoke(context: Context) = Intent(context, MainActivity::class.java)
+    }
 
     private val viewModel: MainActivityViewModel by viewModels()
-
     private val adapter by lazy(NONE) { RecyclerAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
