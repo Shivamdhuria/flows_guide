@@ -35,6 +35,7 @@
             <TextView
                 android:id="@+id/breed_name"
                 android:layout_width="0dp"
+                android:lines="2"
                 android:layout_height="wrap_content"
                 android:padding="12dp"
                 android:textAppearance="?attr/textAppearanceListItem"

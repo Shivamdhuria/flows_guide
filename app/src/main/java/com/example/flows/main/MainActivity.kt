@@ -3,13 +3,13 @@ package com.example.flows.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.SearchView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.flows.R
 import com.example.flows.error.ResultWrapper
-import com.example.flows.extensions.showToast
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
@@ -69,13 +69,31 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.liveDateFetch.observe(this, Observer {
             when (it) {
-                is ResultWrapper.Loading -> {
-                }
-                is ResultWrapper.NetworkError -> {
-                    showToast("NO internet")
+                is ResultWrapper.Loading -> showLoading(it.isLoading)
+                is ResultWrapper.NetworkError -> showError()
+                is ResultWrapper.Success<*> -> {
+                    animation_loading.visibility = View.INVISIBLE
+                    animation_error.visibility = View.INVISIBLE
                 }
             }
         })
+    }
+
+    private fun showError() {
+        animation_loading.visibility = View.GONE
+        animation_error.visibility = View.VISIBLE
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        when (isLoading) {
+            true -> {
+                animation_loading.visibility = View.VISIBLE
+                animation_error.visibility = View.GONE
+            }
+            false -> {
+//                animation.visibility = View.INVISIBLE
+            }
+        }
     }
 
     override fun onResume() {

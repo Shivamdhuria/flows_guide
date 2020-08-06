@@ -2,6 +2,7 @@ package com.example.flows.main
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.example.flows.error.ResultWrapper
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.asFlow
@@ -44,6 +45,7 @@ class MainActivityViewModel @ViewModelInject constructor(private val mainActivit
 
     val liveDateFetch = _inputLiveData.switchMap {
         liveData {
+            emit(ResultWrapper.Loading(true))
             emit(mainActivityRepository.tryFetchAndUpdate())
         }
     }
