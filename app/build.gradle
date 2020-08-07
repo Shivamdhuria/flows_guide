@@ -111,4 +111,8 @@ dependencies {
 
     //Lottie
     implementation 'com.airbnb.android:lottie:3.4.0'
+
+    //Stetho
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
 }
