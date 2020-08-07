@@ -20,12 +20,14 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/pug" />
 
-    <TextView
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Paws"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/paws"
         android:textAlignment="center"
-        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/animationView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

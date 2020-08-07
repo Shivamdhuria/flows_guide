@@ -31,5 +31,6 @@ class SplashActivity : AppCompatActivity() {
     private fun redirect() {
         startActivity(MainActivity(this))
         overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
+        finish()
     }
 }

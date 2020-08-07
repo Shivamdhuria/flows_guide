@@ -5,8 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Dog(
-    @PrimaryKey
     val breed: String,
     val imageUrl: String?,
-    var isTopDog: Boolean = false
+    var isTopDog: Boolean = false,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int? = null
 )

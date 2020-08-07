@@ -16,9 +16,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:queryHint="Search Breed" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_root"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/loadMore"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search">
 
@@ -30,7 +32,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="true"
                 android:paddingStart="@dimen/card_side_margin"
                 android:paddingEnd="@dimen/card_side_margin"
@@ -44,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="10dp"
                 android:visibility="visible"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
@@ -52,20 +54,20 @@
                 app:lottie_scale="0.2"
                 app:lottie_speed="3" />
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animation_error"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="100dp"
-                android:visibility="visible"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/error_dog"
-                app:lottie_scale="0.2"
-                app:lottie_speed="3" />
+            <!--            <com.airbnb.lottie.LottieAnimationView-->
+            <!--                android:id="@+id/animation_error"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:layout_marginBottom="100dp"-->
+            <!--                android:visibility="visible"-->
+            <!--                app:lottie_autoPlay="true"-->
+            <!--                app:lottie_loop="true"-->
+            <!--                app:lottie_rawRes="@raw/error_dog"-->
+            <!--                app:lottie_scale="0.2"-->
+            <!--                app:lottie_speed="3" />-->
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loadMore"
@@ -74,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
         android:backgroundTint="@color/colorAccent"
+        android:paddingBottom="0dp"
         android:text="Load More"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

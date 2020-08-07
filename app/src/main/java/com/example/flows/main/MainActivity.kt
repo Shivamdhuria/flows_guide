@@ -73,27 +73,26 @@ class MainActivity : AppCompatActivity() {
                 is ResultWrapper.NetworkError -> showError()
                 is ResultWrapper.Success<*> -> {
                     animation_loading.visibility = View.INVISIBLE
-                    animation_error.visibility = View.INVISIBLE
+                    scroll_root.fullScroll(View.FOCUS_DOWN)
                 }
             }
         })
     }
 
     private fun showError() {
-        animation_loading.visibility = View.GONE
-        animation_error.visibility = View.VISIBLE
+        showAnimation(R.raw.error_dog)
     }
 
     private fun showLoading(isLoading: Boolean) {
         when (isLoading) {
-            true -> {
-                animation_loading.visibility = View.VISIBLE
-                animation_error.visibility = View.GONE
-            }
-            false -> {
-//                animation.visibility = View.INVISIBLE
-            }
+            true -> showAnimation(R.raw.loading)
         }
+    }
+
+    private fun showAnimation(animationResource: Int) {
+        animation_loading.visibility = View.VISIBLE
+        animation_loading.setAnimation(animationResource)
+        animation_loading.playAnimation()
     }
 
     override fun onResume() {
