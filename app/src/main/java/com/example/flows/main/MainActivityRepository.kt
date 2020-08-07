@@ -24,13 +24,13 @@ class MainActivityRepository @Inject constructor(
     @ExperimentalCoroutinesApi
     fun getSearchedDogs(search: String): Flow<List<Dog>> {
         return dogDao.getSearchedDogs(search) // Get searched dogs from Room Database
-            // Combine the result with another flow
-            .combine(topBreedsFlow) { dogs, topDogs ->
-                dogs.applyToDog(topDogs)
-            }
-            .flowOn(Dispatchers.Default)
-            // Return the latest values
-            .conflate()
+                // Combine the result with another flow
+                .combine(topBreedsFlow) { dogs, topDogs ->
+                    dogs.applyToDog(topDogs)
+                }
+                .flowOn(Dispatchers.Default)
+                // Return the latest values
+                .conflate()
     }
 
     private val topBreedsFlow = dogsRDS.favoritesSortOrder()
@@ -42,7 +42,7 @@ class MainActivityRepository @Inject constructor(
             is ResultWrapper.Success<*> -> {
                 val dogResponse = api.value as ApiResponse<String>
                 val breedImageUrl = dogResponse.message
-                val dog = extractBreedName(breedImageUrl)?.let { Dog(it, breedImageUrl) }
+                val dog = extractBreedName(breedImageUrl)?.let { Dog(it, breedImageUrl, false, null) }
                 dog?.run {
                     dogDao.save(this)
                 }
@@ -59,7 +59,7 @@ class MainActivityRepository @Inject constructor(
     private fun List<Dog>.applyToDog(favoritesSortOrder: List<String>): List<Dog> {
         return this.map {
             val isTopDog = favoritesSortOrder.contains(it.breed.capitalize())
-            Dog(it.breed, it.imageUrl, isTopDog)
+            Dog(it.breed, it.imageUrl, isTopDog, null)
         }
     }
 

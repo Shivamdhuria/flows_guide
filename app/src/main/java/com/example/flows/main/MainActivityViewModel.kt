@@ -2,10 +2,8 @@ package com.example.flows.main
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import com.example.flows.main.data.Dog
+import com.example.flows.error.ResultWrapper
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.catch
@@ -15,26 +13,12 @@ import java.util.concurrent.atomic.AtomicInteger
 
 class MainActivityViewModel @ViewModelInject constructor(private val mainActivityRepository: MainActivityRepository) : ViewModel() {
 
-    private val parentJob = SupervisorJob()
-    private val _dogList = MutableLiveData<List<Dog>>()
     private val _snackbar = MutableLiveData<String?>()
-    private val _status = MutableLiveData<String?>()
     private val _inputLiveData = MutableLiveData<Int>()
-    private val _clearCacheLiveData = MutableLiveData<Int>()
-    private val _spinner = MutableLiveData(false)
-    private val _topDogsAsync = MutableLiveData<List<Dog>>()
     private val atomicInteger = AtomicInteger()
 
-    val dogList: LiveData<List<Dog>>
-        get() = _dogList
     val snackbar: LiveData<String?>
         get() = _snackbar
-    val spinner: LiveData<Boolean>
-        get() = _spinner
-    val status: LiveData<String?>
-        get() = _status
-    val topDogsAsync: LiveData<List<Dog>>
-        get() = _topDogsAsync
 
     fun onSnackbarShown() {
         _snackbar.value = null
@@ -61,13 +45,9 @@ class MainActivityViewModel @ViewModelInject constructor(private val mainActivit
 
     val liveDateFetch = _inputLiveData.switchMap {
         liveData {
+            emit(ResultWrapper.Loading(true))
             emit(mainActivityRepository.tryFetchAndUpdate())
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        parentJob.cancelChildren()
     }
 
     fun fetchDogsFlow() {

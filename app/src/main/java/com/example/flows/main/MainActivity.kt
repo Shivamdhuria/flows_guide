@@ -1,26 +1,29 @@
 package com.example.flows.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.SearchView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.flows.R
 import com.example.flows.error.ResultWrapper
-import com.example.flows.extensions.showToast
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlin.LazyThreadSafetyMode.NONE
 
-// Adds this to dagger graph so we can inject dependencies in it
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-// class MainActivity : DaggerAppCompatActivity() {
+
+    internal companion object {
+        operator fun invoke(context: Context) = Intent(context, MainActivity::class.java)
+    }
 
     private val viewModel: MainActivityViewModel by viewModels()
-
     private val adapter by lazy(NONE) { RecyclerAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,13 +69,30 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.liveDateFetch.observe(this, Observer {
             when (it) {
-                is ResultWrapper.Loading -> {
-                }
-                is ResultWrapper.NetworkError -> {
-                    showToast("NO internet")
+                is ResultWrapper.Loading -> showLoading(it.isLoading)
+                is ResultWrapper.NetworkError -> showError()
+                is ResultWrapper.Success<*> -> {
+                    animation_loading.visibility = View.INVISIBLE
+                    scroll_root.fullScroll(View.FOCUS_DOWN)
                 }
             }
         })
+    }
+
+    private fun showError() {
+        showAnimation(R.raw.error_dog)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        when (isLoading) {
+            true -> showAnimation(R.raw.loading)
+        }
+    }
+
+    private fun showAnimation(animationResource: Int) {
+        animation_loading.visibility = View.VISIBLE
+        animation_loading.setAnimation(animationResource)
+        animation_loading.playAnimation()
     }
 
     override fun onResume() {
