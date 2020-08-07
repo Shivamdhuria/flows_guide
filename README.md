@@ -17,3 +17,4 @@ The project uses [DogApi](https://dog.ceo/dog-api/documentation/) for retrofit r
 | [Implementing Search Filter using Kotlin Channels and Flows in your Android Application](https://medium.com/@shivamdhuria/implementing-search-filter-using-kotlin-channels-and-flows-in-your-android-application-df7c96e58b19)  | [implementing_search_in_database](https://github.com/Shivamdhuria/flows_guide/tree/implementing_search_in_database)|
 | Adding Hilt (No Article ❌) | [migrating_to_hilt](https://github.com/Shivamdhuria/flows_guide/tree/migrating_to_hilt) |
 | Adding Animations using Android (Medium article in progress) | [adding_animation](https://github.com/Shivamdhuria/flows_guide/tree/add_animation_final) |
+| Adding Stetho (Medium article in progress) | [adding_stetho](https://github.com/Shivamdhuria/flows_guide/tree/adding_stetho) |
