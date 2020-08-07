@@ -3,6 +3,7 @@ package com.example.flows.app
 import com.example.flows.BuildConfig
 import com.example.flows.main.network.MainActivityApi
 import com.example.flows.main.network.RemoteDataSource
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,6 +35,7 @@ object NetworkModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         val httpClient = OkHttpClient.Builder()
+        httpClient.addNetworkInterceptor(StethoInterceptor())
         httpClient.readTimeout(10, TimeUnit.SECONDS)
         httpClient.connectTimeout(10, TimeUnit.SECONDS)
         httpClient.writeTimeout(10, TimeUnit.SECONDS)
