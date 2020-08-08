@@ -79,20 +79,21 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun showError() {
-        showAnimation(R.raw.error_animation)
-    }
-
     private fun showLoading(isLoading: Boolean) {
         when (isLoading) {
             true -> showAnimation(R.raw.loading_animation)
         }
     }
 
+    private fun showError() {
+        showAnimation(R.raw.error_animation)
+    }
+
     private fun showAnimation(animationResource: Int) {
         animation_loading.visibility = View.VISIBLE
         animation_loading.setAnimation(animationResource)
         animation_loading.playAnimation()
+        scroll_root.fullScroll(View.FOCUS_DOWN)
     }
 
     override fun onResume() {

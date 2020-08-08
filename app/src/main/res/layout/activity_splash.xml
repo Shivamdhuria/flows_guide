@@ -11,14 +11,14 @@
         android:id="@+id/animationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:lottie_speed="3"
         android:layout_marginTop="200dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_scale="0.2"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/splash_animation" />
+        app:lottie_rawRes="@raw/splash_animation"
+        app:lottie_scale="0.2"
+        app:lottie_speed="3" />
 
     <ImageView
         android:layout_width="200dp"
