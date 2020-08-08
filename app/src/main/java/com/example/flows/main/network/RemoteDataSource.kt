@@ -99,7 +99,7 @@ class RemoteDataSource @Inject constructor(private val api: MainActivityApi) {
             "miniature",
             "standard",
             "toy",
-            "pug",
+            "splash_animation",
             "schnauzer",
             "giant",
             "miniature",

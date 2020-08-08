@@ -80,12 +80,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showError() {
-        showAnimation(R.raw.error_dog)
+        showAnimation(R.raw.error_animation)
     }
 
     private fun showLoading(isLoading: Boolean) {
         when (isLoading) {
-            true -> showAnimation(R.raw.loading)
+            true -> showAnimation(R.raw.loading_animation)
         }
     }
 
