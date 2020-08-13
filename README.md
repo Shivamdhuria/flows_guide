@@ -28,3 +28,4 @@ The project uses [DogApi](https://dog.ceo/dog-api/documentation/) for retrofit r
   - Using Color Pallette API for setting background color of bottom sheet above
   - Recycler - Selection library with contexual Action mode for setting a Dog as Favorite
   - Using Paging 3 library 
+  - Update this Readme for APp screenshots, credits, libraries used and contribution.
