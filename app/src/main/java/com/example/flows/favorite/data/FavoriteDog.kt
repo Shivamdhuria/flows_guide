@@ -1,13 +1,12 @@
-package com.example.flows.main.data
+package com.example.flows.favorite.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
-data class Dog(
+@Entity(tableName = "favorite_dog_table")
+data class FavoriteDog(
     val breed: String,
     val imageUrl: String?,
-    var isTopDog: Boolean = false,
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null
 )

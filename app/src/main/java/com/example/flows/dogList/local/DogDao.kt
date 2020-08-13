@@ -1,10 +1,10 @@
-package com.example.flows.main.local
+package com.example.flows.dogList.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.flows.main.data.Dog
+import com.example.flows.dogList.data.Dog
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,6 +1,6 @@
-package com.example.flows.main.network
+package com.example.flows.dogList.network
 
-import com.example.flows.main.data.ApiResponse
+import com.example.flows.dogList.data.ApiResponse
 import retrofit2.http.GET
 
 interface MainActivityApi {

@@ -1,4 +1,4 @@
-package com.example.flows.main.data
+package com.example.flows.dogList.data
 
 import com.google.gson.annotations.SerializedName
 

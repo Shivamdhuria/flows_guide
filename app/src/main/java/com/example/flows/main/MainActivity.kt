@@ -20,52 +20,44 @@ class MainActivity : AppCompatActivity() {
         operator fun invoke(context: Context) = Intent(context, MainActivity::class.java)
     }
 
-    // Private properties
     private val navController by lazy { findNavController(R.id.nav_host_fragment) }
     private val appBarConfiguration by lazy {
         AppBarConfiguration(topLevelDestinationIds =
-                setOf(
-                        R.id.dogListFragment,
-                        R.id.favoritesFragment
-                )
+        setOf(
+                R.id.dogListFragment,
+                R.id.favoritesFragment
         )
-    } // 2
+        )
+    }
 
-    //
-//    private val viewModel: MainActivityViewModel by viewModels()
-//    private val adapter by lazy(NONE) { RecyclerAdapter() }
-//
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        recycler.adapter = adapter
-//        subscribeObservers()
-//        initListeners()
-//        viewModel.setSearchQuery("")
         setupNavigation()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
     private fun setupNavigation() {
-//        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
-
         NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration)
-
         bottom_navigation.setupWithNavController(navController)
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id in arrayOf(R.id.aboutFragment)) {
+//        navController.addOnDestinationChangedListener { _, destination, _ ->
+//            if (destination.id in arrayOf(R.id.aboutFragment)) {
 //                fab.hide()
-            } else {
-//                fab.show()
-            }
+//            } else {
+// //                fab.show()
+//            }
 
 //            if (destination.id == R.id.presentationFragment) {
 //                toolbar.visibility = View.GONE
 //            } else {
 //                toolbar.visibility = View.VISIBLE
 //            }
-        }
+//        }
     }
+
 //
 //    private fun initListeners() {
 //
@@ -158,8 +150,4 @@ class MainActivity : AppCompatActivity() {
 //            else -> super.onContextItemSelected(item)
 //        }
 //    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
 }

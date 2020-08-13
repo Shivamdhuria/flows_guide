@@ -8,5 +8,14 @@
         android:id="@+id/favoritesFragment"
         android:name="com.example.flows.favorite.FavoritesFragment"
         android:label="Favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_dogDetailFragment"
+            app:destination="@id/dogDetailFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/dogDetailFragment2"
+        android:name="com.example.flows.dogDetail.DogDetailFragment"
+        android:label="dog_detail_fragment"
+        tools:layout="@layout/dog_detail_fragment" />
 </navigation>

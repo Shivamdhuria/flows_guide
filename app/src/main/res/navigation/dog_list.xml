@@ -16,11 +16,17 @@
     <fragment
         android:id="@+id/dogDetailFragment"
         android:name="com.example.flows.dogDetail.DogDetailFragment"
-        android:label="dog_detail_fragment"
+        android:label="Dog Details"
         tools:layout="@layout/dog_detail_fragment" >
         <action
             android:id="@+id/action_dogDetailFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

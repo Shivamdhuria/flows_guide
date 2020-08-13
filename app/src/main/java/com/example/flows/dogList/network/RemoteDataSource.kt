@@ -1,4 +1,4 @@
-package com.example.flows.main.network
+package com.example.flows.dogList.network
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow

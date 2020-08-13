@@ -16,7 +16,7 @@
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="60dp"
             android:theme="@style/AppSearchView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

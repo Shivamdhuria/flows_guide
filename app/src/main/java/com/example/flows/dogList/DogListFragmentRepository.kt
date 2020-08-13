@@ -1,12 +1,12 @@
-package com.example.flows.main
+package com.example.flows.dogList
 
+import com.example.flows.dogList.data.ApiResponse
+import com.example.flows.dogList.data.Dog
+import com.example.flows.dogList.local.DogDao
+import com.example.flows.dogList.network.MainActivityApi
+import com.example.flows.dogList.network.RemoteDataSource
 import com.example.flows.error.ResultWrapper
 import com.example.flows.extensions.safeApiCall
-import com.example.flows.main.data.ApiResponse
-import com.example.flows.main.data.Dog
-import com.example.flows.main.local.DogDao
-import com.example.flows.main.network.MainActivityApi
-import com.example.flows.main.network.RemoteDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -15,10 +15,10 @@ import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class MainActivityRepository @Inject constructor(
-    private val dogDao: DogDao,
-    private val dogsRDS: RemoteDataSource,
-    private val api: MainActivityApi
+class DogListFragmentRepository @Inject constructor(
+        private val dogDao: DogDao,
+        private val dogsRDS: RemoteDataSource,
+        private val api: MainActivityApi
 ) {
 
     @ExperimentalCoroutinesApi
