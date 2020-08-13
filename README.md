@@ -18,3 +18,4 @@ The project uses [DogApi](https://dog.ceo/dog-api/documentation/) for retrofit r
 | Adding Hilt (No Article ❌) | [migrating_to_hilt](https://github.com/Shivamdhuria/flows_guide/tree/migrating_to_hilt) |
 | [Adding animations to your Android application using Lottie library](https://medium.com/@shivamdhuria/adding-animations-to-your-android-application-using-lottie-library-fa2d7197e23b) | [adding_animation](https://github.com/Shivamdhuria/flows_guide/tree/add_animation_final) |
 | Adding Stetho (Medium article in progress) | [adding_stetho](https://github.com/Shivamdhuria/flows_guide/tree/adding_stetho) |
+| Migrating to Single Activity architecture with Navigation Components (No Article ❌) | [migrate_to_single_activity_and_navigation_component](https://github.com/Shivamdhuria/flows_guide/tree/migrate_to_single_activity_and_navigation_component) |
