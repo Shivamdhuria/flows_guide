@@ -14,6 +14,7 @@
         app:cardCornerRadius="@dimen/card_corner_radius"
         app:cardElevation="@dimen/card_elevation"
         app:cardPreventCornerOverlap="false"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -35,13 +36,14 @@
             <TextView
                 android:id="@+id/breed_name"
                 android:layout_width="0dp"
-                android:lines="2"
                 android:layout_height="wrap_content"
-                android:padding="12dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:padding="5dp"
+                android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceListItem"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
-                android:textAlignment="center"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

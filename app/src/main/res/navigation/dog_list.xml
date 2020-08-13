@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dog_list"
+    app:startDestination="@id/dogListFragment">
+
+    <fragment
+        android:id="@+id/dogListFragment"
+        android:name="com.example.flows.dogList.DogListFragment"
+        android:label="All Dogs"
+        tools:layout="@layout/dog_list_fragment" >
+        <action
+            android:id="@+id/action_dogListFragment_to_dogDetailFragment"
+            app:destination="@id/dogDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dogDetailFragment"
+        android:name="com.example.flows.dogDetail.DogDetailFragment"
+        android:label="Dog Details"
+        tools:layout="@layout/dog_detail_fragment" >
+        <action
+            android:id="@+id/action_dogDetailFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.flows.about.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+</navigation>

@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 29
@@ -92,10 +93,10 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
 
     //testing
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     testImplementation "org.mockito:mockito-core:3.3.3"
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.4'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7'
 
     // Room
     kapt "androidx.room:room-compiler:$rootProject.room_version"
@@ -115,4 +116,13 @@ dependencies {
     //Stetho
     implementation 'com.facebook.stetho:stetho:1.5.1'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+
+    //Navigation Architectural Components
+    def nav_version = "2.3.0"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //safe args
+
 }

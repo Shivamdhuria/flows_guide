@@ -1,8 +1,8 @@
 package com.example.flows.app
 
 import com.example.flows.BuildConfig
-import com.example.flows.main.network.MainActivityApi
-import com.example.flows.main.network.RemoteDataSource
+import com.example.flows.dogList.network.MainActivityApi
+import com.example.flows.dogList.network.RemoteDataSource
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import dagger.Module
 import dagger.Provides
