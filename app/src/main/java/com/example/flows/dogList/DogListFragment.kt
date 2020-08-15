@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.example.flows.R
 import com.example.flows.error.ResultWrapper
@@ -68,7 +70,7 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
                 is ResultWrapper.NetworkError -> showError()
                 is ResultWrapper.Success<*> -> {
                     animation_loading.visibility = View.INVISIBLE
-                    scroll_root.fullScroll(View.FOCUS_DOWN)
+//                    scroll_root.fullScroll(View.FOCUS_DOWN)
                 }
             }
         })
@@ -92,52 +94,16 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
 
     override fun onResume() {
         super.onResume()
-        viewModel.fetchDogsFlow()
+//        viewModel.fetchDogsFlow()
     }
 
-    override fun itemClickedClicked(imageUrl: String, breed: String) {
+    override fun itemClickedClicked(view: View, imageUrl: String, breed: String) {
         val toDogDetailsFragment = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(imageUrl, breed)
-        navigate(toDogDetailsFragment)
+        val extras = FragmentNavigatorExtras(view to imageUrl)
+        navigate(toDogDetailsFragment, extras)
     }
 
-//    inner class ActionModeCallback : ActionMode.Callback {
-//        var shouldResetRecyclerView = true
-//        override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
-//            when (item?.getItemId()) {
-//                R.id.action_delete -> {
-//                    shouldResetRecyclerView = false
-//                    myAdapter?.deleteSelectedIds()
-//                    actionMode?.setTitle("") //remove item count from action mode.
-//                    actionMode?.finish()
-//                    return true
-//                }
-//            }
-//            return false
-//        }
-//
-//        override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-//            val inflater = mode?.getMenuInflater()
-//            inflater?.inflate(R.menu.action_mode_menu, menu)
-//            return true
-//        }
-//
-//        override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-//            menu?.findItem(R.id.action_delete)?.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
-//            return true
-//        }
-//
-//        override fun onDestroyActionMode(mode: ActionMode?) {
-//            if (shouldResetRecyclerView) {
-//                adapter?.selectedIds?.clear()
-//                adapter?.notifyDataSetChanged()
-//            }
-//            isMultiSelectOn = false
-//            actionMode = null
-//            shouldResetRecyclerView = true
-//        }
-//    }
-
-    private fun navigate(destination: NavDirections) = with(findNavController()) {
-        currentDestination?.getAction(destination.actionId)?.let { navigate(destination) }
+    private fun navigate(destination: NavDirections, extraInfo: FragmentNavigator.Extras) = with(findNavController()) {
+        currentDestination?.getAction(destination.actionId)?.let { navigate(destination, extraInfo) }
     }
 }

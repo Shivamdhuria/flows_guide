@@ -43,7 +43,7 @@
                     android:paddingStart="@dimen/card_side_margin"
                     android:paddingEnd="@dimen/card_side_margin"
                     app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-                    app:spanCount="3"
+                    app:spanCount="2"
                     tools:context="com.raywenderlich.android.episodes.ui.MainActivity"
                     tools:listitem="@layout/item_doggo" />
 

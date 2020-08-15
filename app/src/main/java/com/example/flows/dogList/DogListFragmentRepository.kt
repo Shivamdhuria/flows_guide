@@ -10,24 +10,23 @@ import com.example.flows.extensions.safeApiCall
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class DogListFragmentRepository @Inject constructor(
-        private val dogDao: DogDao,
-        private val dogsRDS: RemoteDataSource,
-        private val api: MainActivityApi
+    private val dogDao: DogDao,
+    private val dogsRDS: RemoteDataSource,
+    private val api: MainActivityApi
 ) {
 
     @ExperimentalCoroutinesApi
     fun getSearchedDogs(search: String): Flow<List<Dog>> {
         return dogDao.getSearchedDogs(search) // Get searched dogs from Room Database
                 // Combine the result with another flow
-                .combine(topBreedsFlow) { dogs, topDogs ->
-                    dogs.applyToDog(topDogs)
-                }
+//                .combine(topBreedsFlow) { dogs, topDogs ->
+//                    dogs.applyToDog(topDogs)
+//                }
                 .flowOn(Dispatchers.Default)
                 // Return the latest values
                 .conflate()
