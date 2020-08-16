@@ -5,35 +5,11 @@
     android:id="@+id/detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:fitsSystemWindows="false">
-
-    <!--    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--        xmlns:tools="http://schemas.android.com/tools"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:background="@color/background"-->
-    <!--        android:fitsSystemWindows="false">-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background">
-
-        <!--    <com.google.android.material.card.MaterialCardView-->
-        <!--        android:id="@+id/detail_plot"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="match_parent"-->
-        <!--        android:layout_margin="60dp"-->
-        <!--        android:visibility="gone"-->
-        <!--        app:cardBackgroundColor="@color/background"-->
-        <!--        app:cardCornerRadius="12dp"-->
-        <!--        app:cardElevation="16dp"-->
-        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toTopOf="parent">-->
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/profile_detail_background"
@@ -51,11 +27,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:text="ZOOTOPIA"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/work_sans_bold"
+            android:textAppearance="?attr/textAppearanceHeadline2"
+            app:fontFamily="@font/work_sans"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_detail_background"
             tools:text="Zootopia" />

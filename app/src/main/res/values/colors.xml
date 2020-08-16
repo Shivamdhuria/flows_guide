@@ -8,4 +8,38 @@
     <color name="black_overlay">#66000000</color>
     <color name="white">#ffffffff</color>
     <color name="white_87">#ddffffff</color>
+
+
+    <color name="zimgur_white_50">#ffffff</color>
+
+    <color name="reply_black_800">#121212</color>
+    <color name="zimgur_black_900">#000000</color>
+
+    <color name="zimgur_blue_50">#eef0f2</color>
+    <color name="zimgur_blue_200">#adc0cb</color>
+    <color name="zimgur_blue_300">#8da6b5</color>
+    <color name="zimgur_blue_800">#344955</color>
+    <color name="zimgur_blue_900">#23343e</color>
+
+
+    <color name="zimgur_yellow_100">#fcecb3</color>
+    <color name="zimgur_yellow_200">#fadf82</color>
+    <color name="zimgur_yellow_500">#f7c00b</color>
+    <color name="zimgur_yellow_600">#f7b201</color>
+
+    <color name="zimgur_red_200">#cf7779</color>
+    <color name="zimgur_red_400">#ff4c5d</color>
+
+    <color name="zimgur_black_900_alpha_020">#33000000</color>
+    <color name="zimgur_black_900_alpha_087">#de000000</color>
+    <color name="zimgur_black_900_alpha_060">#99000000</color>
+
+    <color name="zimgur_white_50_alpha_060">#99ffffff</color>
+
+    <color name="zimgur_blue_50_alpha_060">#99eef0f2</color>
+    <color name="zimgur_yellow_50_alpha_060">#99f8d44f</color>
+
+
+    <color name="nav_bar">@color/zimgur_black_900_alpha_020</color>
+
 </resources>

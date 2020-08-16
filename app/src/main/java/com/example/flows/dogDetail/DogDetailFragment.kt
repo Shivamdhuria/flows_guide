@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -13,6 +12,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.example.flows.R
+import com.example.flows.extensions.themeColor
 import com.example.flows.util.ImageLoader
 import com.google.android.material.transition.MaterialContainerTransform
 import kotlinx.android.synthetic.main.dog_detail_fragment.*
@@ -37,8 +37,7 @@ class DogDetailFragment : Fragment(R.layout.dog_detail_fragment) {
             startElevation = 9f
             endElevation = 9f
 //            setAllContainerColors(requireContext().getColor(R.color.background))
-            setAllContainerColors(ContextCompat.getColor(requireContext(), R.color.background))
-        }
+            setAllContainerColors(requireContext().themeColor(R.attr.colorSurface)) }
         super.onCreate(savedInstanceState)
     }
 

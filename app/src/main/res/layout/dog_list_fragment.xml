@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     tools:context=".dogList.DogListFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,14 +13,14 @@
         android:layout_height="match_parent"
         tools:context=".main.MainActivity">
 
-<!--        <androidx.appcompat.widget.SearchView-->
-<!--            android:id="@+id/search"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:theme="@style/AppSearchView"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:queryHint="Search Breed" />-->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:theme="@style/AppSearchView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryHint="Search Breed" />
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll_root"
@@ -29,22 +28,21 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/loadMore"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/search">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@color/background"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
-                    android:transitionGroup="true"
                     android:layout_height="match_parent"
                     android:nestedScrollingEnabled="true"
                     android:paddingStart="@dimen/card_side_margin"
                     android:paddingEnd="@dimen/card_side_margin"
+                    android:transitionGroup="true"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="2"
                     tools:context="com.raywenderlich.android.episodes.ui.MainActivity"
@@ -62,19 +60,6 @@
                     app:lottie_rawRes="@raw/loading"
                     app:lottie_scale="0.2"
                     app:lottie_speed="3" />
-
-                <!--            <com.airbnb.lottie.LottieAnimationView-->
-                <!--                android:id="@+id/animation_error"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:layout_marginTop="10dp"-->
-                <!--                android:layout_marginBottom="100dp"-->
-                <!--                android:visibility="visible"-->
-                <!--                app:lottie_autoPlay="true"-->
-                <!--                app:lottie_loop="true"-->
-                <!--                app:lottie_rawRes="@raw/error_dog"-->
-                <!--                app:lottie_scale="0.2"-->
-                <!--                app:lottie_speed="3" />-->
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
