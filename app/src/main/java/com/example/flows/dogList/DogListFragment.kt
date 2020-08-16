@@ -2,6 +2,7 @@ package com.example.flows.dogList
 
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,6 +15,7 @@ import com.example.flows.R
 import com.example.flows.dogList.data.Dog
 import com.example.flows.error.ResultWrapper
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.dog_list_fragment.*
@@ -39,18 +41,18 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
 
     private fun initListeners() {
 
-//        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-//                androidx.appcompat.widget.SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                newText?.let { viewModel.setSearchQuery(it) }
-//                return true
-//            }
-//        }
-//        )
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+                androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { viewModel.setSearchQuery(it) }
+                return true
+            }
+        }
+        )
         loadMore.setOnClickListener {
             viewModel.fetchDogsFlow()
         }
@@ -75,7 +77,6 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
                 is ResultWrapper.NetworkError -> showError()
                 is ResultWrapper.Success<*> -> {
                     animation_loading.visibility = View.INVISIBLE
-//                    scroll_root.fullScroll(View.FOCUS_DOWN)
                 }
             }
         })
@@ -97,18 +98,14 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
         animation_loading.playAnimation()
     }
 
-    override fun onResume() {
-        super.onResume()
-//        viewModel.fetchDogsFlow()
-    }
-
     override fun itemClickedClicked(view: View, dog: Dog) {
 
-        exitTransition = MaterialElevationScale(false).apply {
-            duration = 200.toLong()
+        exitTransition = Hold().apply {
+            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
         }
-        reenterTransition = MaterialElevationScale(false).apply {
-            duration = 200.toLong()
+
+        reenterTransition = MaterialElevationScale(true).apply {
+            duration = resources.getInteger(R.integer.motion_duration_small).toLong()
         }
         val toDogDetailsFragment = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(dog.imageUrl.toString(), dog.breed)
         val extras = FragmentNavigatorExtras(view to dog.imageUrl.toString())

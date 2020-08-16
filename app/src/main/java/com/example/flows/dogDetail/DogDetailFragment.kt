@@ -1,6 +1,5 @@
 package com.example.flows.dogDetail
 
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
@@ -26,18 +25,16 @@ class DogDetailFragment : Fragment(R.layout.dog_detail_fragment) {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         sharedElementEnterTransition = MaterialContainerTransform().apply {
-//            addTarget(android.R.id.content)
             // Scope the transition to a view in the hierarchy so we know it will be added under
             // the bottom app bar but over the elevation scale of the exiting HomeFragment.
             drawingViewId = R.id.nav_host_fragment
-            duration = 200.toLong()
-            scrimColor = Color.TRANSPARENT
+            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+
+//            scrimColor = Color.TRANSPARENT
 //            this.pathMotion = com.google.android.material.transition.MaterialArcMotion()
             isElevationShadowEnabled = true
-            startElevation = 9f
-            endElevation = 9f
-//            setAllContainerColors(requireContext().getColor(R.color.background))
-            setAllContainerColors(requireContext().themeColor(R.attr.colorSurface)) }
+            setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
+        }
         super.onCreate(savedInstanceState)
     }
 
@@ -46,8 +43,8 @@ class DogDetailFragment : Fragment(R.layout.dog_detail_fragment) {
 
         val (imageUrl, breed) = args
         detail_container.transitionName = imageUrl
-        ImageLoader.loadImage(requireContext(), imageUrl, profile_detail_background)
-        detail_plot_title.text = breed
+        ImageLoader.loadImage(requireContext(), imageUrl, image_dog_detail)
+        textview_dog_breed.text = breed
 
 //        setSharedElementTransitionOnEnter()
 //        postponeEnterTransition()

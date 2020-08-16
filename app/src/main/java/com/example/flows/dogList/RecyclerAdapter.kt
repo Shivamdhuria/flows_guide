@@ -11,7 +11,7 @@ import com.example.flows.dogList.data.Dog
 import com.example.flows.extensions.inflate
 import com.example.flows.util.ImageLoader
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_doggo.view.*
+import kotlinx.android.synthetic.main.item_dog.view.*
 
 class RecyclerAdapter(val callback: RecyclerViewClickListener) : ListAdapter<Dog, RecyclerAdapter.DogViewHolder>(UserDataAdapterListDiff()) {
 
@@ -20,7 +20,7 @@ class RecyclerAdapter(val callback: RecyclerViewClickListener) : ListAdapter<Dog
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder =
-            DogViewHolder(parent.inflate(R.layout.item_doggo))
+            DogViewHolder(parent.inflate(R.layout.item_dog))
 
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
         holder.bind(getItem(position))
@@ -43,8 +43,8 @@ class RecyclerAdapter(val callback: RecyclerViewClickListener) : ListAdapter<Dog
 
             with(containerView) {
                 ViewCompat.setTransitionName(item_container, dog.imageUrl)
-                item_poster_title.text = dog.breed?.capitalize()
-                dog.imageUrl?.let { it1 -> ImageLoader.loadImage(containerView.context, it1, item_poster_post) }
+                breed_name.text = dog.breed?.capitalize()
+                dog.imageUrl?.let { it1 -> ImageLoader.loadImage(containerView.context, it1, image_thumbnail) }
                 setOnClickListener { callback.itemClickedClicked(itemView, dog) }
 //                if (dog.isTopDog) {
 //                    card_layout.setCardBackgroundColor(Color.MAGENTA)

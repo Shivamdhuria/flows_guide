@@ -9,12 +9,11 @@ import com.example.flows.R
 import com.example.flows.extensions.inflate
 import com.example.flows.favorite.data.FavoriteDog
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_doggo.view.*
 
 class FavoriteAdapter : ListAdapter<FavoriteDog, FavoriteAdapter.UserDateViewHolder>(UserDataAdapterListDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserDateViewHolder =
-            UserDateViewHolder(parent.inflate(R.layout.item_doggo))
+            UserDateViewHolder(parent.inflate(R.layout.item_dog))
 
     override fun onBindViewHolder(holder: UserDateViewHolder, position: Int) {
         holder.bind(getItem(position))

@@ -18,46 +18,30 @@
         tools:ignore="UnusedAttribute">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/item_poster_post"
-            android:layout_width="112dp"
-            android:layout_height="112dp"
+            android:id="@+id/image_thumbnail"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:scaleType="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/CircleImageStyle" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/item_poster_title"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/breed_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"
+            android:lines="2"
+            android:ellipsize="end"
             android:padding="8dp"
             android:textAlignment="center"
-            android:text="Poster name"
-            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:textAppearance="?attr/textAppearanceBody1"
             android:textSize="21sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_poster_post"
+            app:layout_constraintTop_toBottomOf="@id/image_thumbnail"
             tools:text="Zootopia" />
 
-<!--        <androidx.appcompat.widget.AppCompatTextView-->
-<!--            android:id="@+id/item_poster_running_time"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingStart="8dp"-->
-<!--            android:paddingEnd="8dp"-->
-<!--            android:text="7878"-->
-<!--            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"-->
-<!--            android:textColor="@color/white_87"-->
-<!--            android:textSize="14sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/item_poster_title"-->
-<!--            tools:text="1 h 45 min" />-->
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </com.google.android.material.card.MaterialCardView>

@@ -9,7 +9,6 @@
     <color name="white">#ffffffff</color>
     <color name="white_87">#ddffffff</color>
 
-
     <color name="zimgur_white_50">#ffffff</color>
 
     <color name="reply_black_800">#121212</color>
@@ -18,8 +17,8 @@
     <color name="zimgur_blue_50">#eef0f2</color>
     <color name="zimgur_blue_200">#adc0cb</color>
     <color name="zimgur_blue_300">#8da6b5</color>
-    <color name="zimgur_blue_800">#344955</color>
-    <color name="zimgur_blue_900">#23343e</color>
+    <color name="zimgur_blue_800">#4CAF50</color>
+    <color name="zimgur_blue_400">#3B863E</color>
 
 
     <color name="zimgur_yellow_100">#fcecb3</color>
