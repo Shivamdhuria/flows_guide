@@ -2,7 +2,7 @@ package com.example.flows.dogList
 
 import android.os.Bundle
 import android.view.View
-import android.widget.SearchView
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -11,8 +11,10 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.example.flows.R
+import com.example.flows.dogList.data.Dog
 import com.example.flows.error.ResultWrapper
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.dog_list_fragment.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -26,6 +28,9 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
+        view.doOnPreDraw { startPostponedEnterTransition() }
+
         recycler.adapter = adapter
         subscribeObservers()
         initListeners()
@@ -34,18 +39,18 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
 
     private fun initListeners() {
 
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-                androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let { viewModel.setSearchQuery(it) }
-                return true
-            }
-        }
-        )
+//        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+//                androidx.appcompat.widget.SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                newText?.let { viewModel.setSearchQuery(it) }
+//                return true
+//            }
+//        }
+//        )
         loadMore.setOnClickListener {
             viewModel.fetchDogsFlow()
         }
@@ -97,9 +102,16 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
 //        viewModel.fetchDogsFlow()
     }
 
-    override fun itemClickedClicked(view: View, imageUrl: String, breed: String) {
-        val toDogDetailsFragment = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(imageUrl, breed)
-        val extras = FragmentNavigatorExtras(view to imageUrl)
+    override fun itemClickedClicked(view: View, dog: Dog) {
+
+        exitTransition = MaterialElevationScale(false).apply {
+            duration = 200.toLong()
+        }
+        reenterTransition = MaterialElevationScale(false).apply {
+            duration = 200.toLong()
+        }
+        val toDogDetailsFragment = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(dog.imageUrl.toString(), dog.breed)
+        val extras = FragmentNavigatorExtras(view to dog.imageUrl.toString())
         navigate(toDogDetailsFragment, extras)
     }
 

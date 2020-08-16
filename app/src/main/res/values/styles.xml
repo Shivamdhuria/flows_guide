@@ -25,4 +25,9 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+    <style name="CircleImageStyle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

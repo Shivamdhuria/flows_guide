@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.flows.R
 import com.example.flows.extensions.inflate
 import com.example.flows.favorite.data.FavoriteDog
-import com.example.flows.util.ImageLoader
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_doggo.view.*
 
@@ -37,7 +36,7 @@ class FavoriteAdapter : ListAdapter<FavoriteDog, FavoriteAdapter.UserDateViewHol
 
         fun bind(dog: FavoriteDog) {
 //            containerView.breed_name.text = dog.breed?.capitalize()
-            dog.imageUrl?.let { it1 -> ImageLoader.loadImageWithCircularCrop(containerView.context, it1, containerView.image_dog) }
+//            dog.imageUrl?.let { it1 -> ImageLoader.loadImageWithCircularCrop(containerView.context, it1, containerView.image_dog) }
 //            this.containerView.card_layout.setCardBackgroundColor(Color.YELLOW)
         }
     }
