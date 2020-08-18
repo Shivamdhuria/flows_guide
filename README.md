@@ -10,8 +10,8 @@ An Android Application written purely in Kotlin utilizing all the latest tech in
 <img src="./previews/introCompressed.jpg" width="700">
 </p>
 
-
 # Medium Articles 
+Follow me on [Medium](https://medium.com/@shivamdhuria) for latest articles.
 
   | Medium Article  | Github Branch|
 | ------ | ------ |
@@ -24,7 +24,7 @@ An Android Application written purely in Kotlin utilizing all the latest tech in
 | [Adding amazing transitions to your Android App easily using Material Motion](https://medium.com/@shivamdhuria/adding-amazing-transitions-to-your-android-app-easily-using-material-motion-f0cd92463b39) | [added_transition_using_material_motion](https://github.com/Shivamdhuria/flows_guide/tree/added_transition_using_material_motion) |
 
 
-# Tech Stack
+## Tech Stack
 <img src="/previews/transition.gif" align="right" width="20%"/>
 
 - [Kotlin](https://kotlinlang.org/)  
@@ -41,14 +41,31 @@ An Android Application written purely in Kotlin utilizing all the latest tech in
   - Single activity Pattern
   
   
-# Roadmap (Features to be added )
+## Roadmap (Features to be added )
   - Shared Element Transition from FAB to SEARCH fragment screen
   - Using Color Pallette API for setting background color of bottom sheet in Dog Details Frag.
   - Recycler - Selection library with contexual Action mode for setting a Dog as Favorite
   - Using Paging 3 library 
   - Update this Readme for APp screenshots, credits, libraries used and contribution.
   
-# Libraries
+  
+### Find this repository useful? :heart:
+Support it by joining starring this repository. :star: <br>
+And follow me on [Medium](https://medium.com/@shivamdhuria) and [Github](https://github.com/Shivamdhuria?tab=repositories)
+  
+  
+### Issues and Contribution
+Currently I am not taking in Pull requests(will start in a while) however you can always a raise an issue and I'll try fix it.
+
+## Project Maintainers
+This project is founded and actively maintained by [Shivam Dhuria](https://github.com/Shivamdhuria).
+
+
+### Dog Api
+Original dataset taken from the the Stanford Dogs Dataset. Logo thanks to NotKnifoon.
+[Dog Api](https://dog.ceo/dog-api/about) provides hundreds of free pictures of dogs.
+  
+### Libraries
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
 - [Moshi](https://github.com/square/moshi/) - A modern JSON library for Kotlin and Java.
 - [Lottie](https://github.com/airbnb/lottie-android) - Lottie is a mobile library for Android and iOS that parses Adobe After Effects animations exported as json with Bodymovin and renders them natively on mobile!
@@ -56,6 +73,5 @@ An Android Application written purely in Kotlin utilizing all the latest tech in
 - [Gson](https://github.com/google/gson) - Gson is a Java library that can be used to convert Java Objects into their JSON representation.
 - [Room](https://developer.android.com/topic/libraries/architecture/room) - For storing Database.
 - [Glide](https://github.com/bumptech/glide) - Glide supports fetching, decoding, and displaying video stills, images, and animated GIFs.
-
 
 
