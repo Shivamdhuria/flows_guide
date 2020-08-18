@@ -1,9 +1,11 @@
 # Paws
+<img src="./previews/Readme.png" width="600">
 
 An Android Application written purely in Kotlin utilizing all the latest tech in Android. The project uses Material Design guidelines,  MVVM architecture, Hilt for Dependency Injection and uses Room for an offline- first approach.
 
-![alt text](https://github.com/Shivamdhuria/flows_guide/blob/master/previews/Readme.png?raw=true)
-![Alt text](previews/Readme.png?raw=true "Mockup")
+![alt text](https://github.com/Shivamdhuria/flows_guide/blob/master/previews/Readme.png=10x)
+
+
 
   - Uses coroutines
   - Flows on top of that
