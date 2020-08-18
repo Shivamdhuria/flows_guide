@@ -32,23 +32,30 @@ An Android Application written purely in Kotlin utilizing all the latest tech in
 - [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
 - Dagger-Hilt (alpha) for dependency injection.
 - JetPack Components
+- Material Design Components
+- Navigation UI
 - Architecture
   - MVVM Architecture 
   - Repository pattern
   - Database Cache as Single Source of Truth
+  - Single activity Pattern
   
   
-  # Libraries
-- [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
-- [Moshi](https://github.com/square/moshi/) - A modern JSON library for Kotlin and Java.
-- [Glide](https://github.com/bumptech/glide), [GlidePalette](https://github.com/florent37/GlidePalette) - loading images.
-
-
-
-## Roadmap (Features to be added )
-  - Shared Element Transition from Dog List to Dog Details Fragment
-  - Bottom Sheet for all details related to the dog in Dog Details Fragment
-  - Using Color Pallette API for setting background color of bottom sheet above
+# Roadmap (Features to be added )
+  - Shared Element Transition from FAB to SEARCH fragment screen
+  - Using Color Pallette API for setting background color of bottom sheet in Dog Details Frag.
   - Recycler - Selection library with contexual Action mode for setting a Dog as Favorite
   - Using Paging 3 library 
   - Update this Readme for APp screenshots, credits, libraries used and contribution.
+  
+# Libraries
+- [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
+- [Moshi](https://github.com/square/moshi/) - A modern JSON library for Kotlin and Java.
+- [Lottie](https://github.com/airbnb/lottie-android) - Lottie is a mobile library for Android and iOS that parses Adobe After Effects animations exported as json with Bodymovin and renders them natively on mobile!
+- [Stetho](https://github.com/facebook/stetho) - Stetho is a sophisticated debug bridge for Android applications.
+- [Gson](https://github.com/google/gson) - Gson is a Java library that can be used to convert Java Objects into their JSON representation.
+- [Room](https://developer.android.com/topic/libraries/architecture/room) - For storing Database.
+- [Glide](https://github.com/bumptech/glide) - Glide supports fetching, decoding, and displaying video stills, images, and animated GIFs.
+
+
+
