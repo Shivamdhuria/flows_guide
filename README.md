@@ -57,7 +57,8 @@ And follow me on [Medium](https://medium.com/@shivamdhuria) and [Github](https:/
 ### Issues and Contribution
 Currently I am not taking in Pull requests(will start in a while) however you can always a raise an issue and I'll try fix it.
 
-## Project Maintainers
+
+### Project Maintainers
 This project is founded and actively maintained by [Shivam Dhuria](https://github.com/Shivamdhuria).
 
 
