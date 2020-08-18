@@ -1,7 +1,8 @@
-# Flows  Application
+# Paws
 
-This is android application where I'll try to impliment the latest and the greatest along with links to the medium article. 
-The project uses [DogApi](https://dog.ceo/dog-api/documentation/) for retrofit requests. It does not request any registration so you can build the application directly.
+An Android Application written purely in Kotlin utilizing all the latest tech in Android. The project uses Material Design guidelines,  MVVM architecture, Hilt for Dependency Injection and uses Room for an offline- first approach.
+
+![alt text](https://github.com/Shivamdhuria/flows_guide/blob/master/previews/Readme.png?raw=true)
 
   - Uses coroutines
   - Flows on top of that
