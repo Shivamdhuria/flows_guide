@@ -29,10 +29,9 @@ class DogDetailFragment : Fragment(R.layout.dog_detail_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val (imageUrl, breed) = args
-        detail_container.transitionName = imageUrl
         ImageLoader.loadImage(requireContext(), imageUrl, image_dog_detail)
         textview_dog_breed.text = breed
+        detail_container.transitionName = imageUrl
     }
 }
