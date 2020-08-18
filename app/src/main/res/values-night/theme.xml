@@ -3,28 +3,28 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!--Final, top-level theme-->
-    <style name="Theme.Zimgur.DayNight" parent="Theme.Zimgur.Dark" />
+    <style name="Theme.Paws.DayNight" parent="Theme.Paws.Dark" />
 
-    <style name="Theme.Zimgur.Dark" parent="Theme.Zimgur">
+    <style name="Theme.Paws.Dark" parent="Theme.Paws">
         <!--Color-->
-        <item name="colorPrimary">@color/zimgur_blue_200</item>
-        <item name="colorPrimaryVariant">@color/zimgur_blue_300</item>
-        <item name="colorSecondary">@color/zimgur_yellow_100</item>
-        <item name="colorSecondaryVariant">@color/zimgur_yellow_200</item>
+        <item name="colorPrimary">@color/Paws_blue_200</item>
+        <item name="colorPrimaryVariant">@color/Paws_blue_300</item>
+        <item name="colorSecondary">@color/Paws_yellow_100</item>
+        <item name="colorSecondaryVariant">@color/Paws_yellow_200</item>
 
-        <item name="android:colorBackground">@color/zimgur_black_900</item>
+        <item name="android:colorBackground">@color/Paws_black_900</item>
         <item name="colorSurface">@color/reply_black_800</item>
         <item name="colorPrimarySurfaceVariant">?attr/colorSurface</item>
-        <item name="colorError">@color/zimgur_red_200</item>
+        <item name="colorError">@color/Paws_red_200</item>
 
-        <item name="colorOnPrimary">@color/zimgur_black_900</item>
-        <item name="colorOnSecondary">@color/zimgur_black_900</item>
-        <item name="colorOnBackground">@color/zimgur_white_50</item>
-        <item name="colorOnSurface">@color/zimgur_white_50</item>
-        <item name="colorOnError">@color/zimgur_white_50</item>
+        <item name="colorOnPrimary">@color/Paws_black_900</item>
+        <item name="colorOnSecondary">@color/Paws_black_900</item>
+        <item name="colorOnBackground">@color/Paws_white_50</item>
+        <item name="colorOnSurface">@color/Paws_white_50</item>
+        <item name="colorOnError">@color/Paws_white_50</item>
 
-        <item name="scrimBackground">@color/zimgur_black_900_alpha_087</item>
-        <item name="android:statusBarColor">@color/zimgur_black_900_alpha_060</item>
+        <item name="scrimBackground">@color/Paws_black_900_alpha_087</item>
+        <item name="android:statusBarColor">@color/Paws_black_900_alpha_060</item>
 
         <item name="elevationOverlayEnabled">true</item>
 

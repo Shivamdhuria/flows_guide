@@ -2,49 +2,49 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.Zimgur.DayNight" parent="Theme.Zimgur" />
+    <style name="Theme.Paws.DayNight" parent="Theme.Paws" />
 
-    <style name="Theme.Zimgur" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Paws" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!--Color-->
-        <item name="colorPrimary">@color/zimgur_blue_800</item>
-        <item name="colorPrimaryVariant">@color/zimgur_blue_800</item>
-        <item name="colorSecondary">@color/zimgur_yellow_500</item>
-        <item name="colorSecondaryVariant">@color/zimgur_yellow_600</item>
+        <item name="colorPrimary">@color/Paws_blue_800</item>
+        <item name="colorPrimaryVariant">@color/Paws_blue_800</item>
+        <item name="colorSecondary">@color/Paws_yellow_500</item>
+        <item name="colorSecondaryVariant">@color/Paws_yellow_600</item>
 
-        <item name="android:colorBackground">@color/zimgur_blue_50</item>
-        <item name="colorSurface">@color/zimgur_white_50</item>
+        <item name="android:colorBackground">@color/Paws_blue_50</item>
+        <item name="colorSurface">@color/Paws_white_50</item>
 
         <item name="colorPrimarySurfaceVariant">?attr/colorPrimaryVariant</item>
-        <item name="colorError">@color/zimgur_red_400</item>
+        <item name="colorError">@color/Paws_red_400</item>
 
-        <item name="colorOnPrimary">@color/zimgur_white_50</item>
-        <item name="colorOnSecondary">@color/zimgur_black_900</item>
-        <item name="colorOnBackground">@color/zimgur_black_900</item>
-        <item name="colorOnSurface">@color/zimgur_black_900</item>
-        <item name="colorOnError">@color/zimgur_white_50</item>
+        <item name="colorOnPrimary">@color/Paws_white_50</item>
+        <item name="colorOnSecondary">@color/Paws_black_900</item>
+        <item name="colorOnBackground">@color/Paws_black_900</item>
+        <item name="colorOnSurface">@color/Paws_black_900</item>
+        <item name="colorOnError">@color/Paws_white_50</item>
 
-        <item name="scrimBackground">@color/zimgur_white_50_alpha_060</item>
-        <item name="android:statusBarColor">@color/zimgur_blue_50_alpha_060</item>
+        <item name="scrimBackground">@color/Paws_white_50_alpha_060</item>
+        <item name="android:statusBarColor">@color/Paws_blue_50_alpha_060</item>
         <item name="android:navigationBarColor">@color/nav_bar</item>
 
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Zimgur.SmallComponent</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Zimgur.MediumComponent</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Zimgur.LargeComponent</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Paws.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Paws.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Paws.LargeComponent</item>
 
         <!--Typography-->
-        <item name="textAppearanceHeadline2">@style/TextAppearance.Zimgur.Headline2</item>
-        <item name="textAppearanceHeadline3">@style/TextAppearance.Zimgur.Headline3</item>
-        <item name="textAppearanceHeadline4">@style/TextAppearance.Zimgur.Headline4</item>
-        <item name="textAppearanceHeadline5">@style/TextAppearance.Zimgur.Headline5</item>
-        <item name="textAppearanceHeadline6">@style/TextAppearance.Zimgur.Headline6</item>
-        <item name="textAppearanceSubtitle1">@style/TextAppearance.Zimgur.Subtitle1</item>
-        <item name="textAppearanceSubtitle2">@style/TextAppearance.Zimgur.Subtitle2</item>
-        <item name="textAppearanceBody1">@style/TextAppearance.Zimgur.Body1</item>
-        <item name="textAppearanceBody2">@style/TextAppearance.Zimgur.Body2</item>
-        <item name="textAppearanceButton">@style/TextAppearance.Zimgur.Button</item>
-        <item name="textAppearanceCaption">@style/TextAppearance.Zimgur.Caption</item>
-        <item name="textAppearanceOverline">@style/TextAppearance.Zimgur.Overline</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Paws.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.Paws.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.Paws.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.Paws.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Paws.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Paws.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.Paws.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Paws.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Paws.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Paws.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.Paws.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.Paws.Overline</item>
 
         <item name="emphasisHighAlpha">0.87</item>
         <item name="emphasisMediumAlpha">0.60</item>

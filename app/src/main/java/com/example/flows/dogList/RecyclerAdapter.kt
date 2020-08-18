@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.item_dog.view.*
 class RecyclerAdapter(val callback: RecyclerViewClickListener) : ListAdapter<Dog, RecyclerAdapter.DogViewHolder>(UserDataAdapterListDiff()) {
 
     interface RecyclerViewClickListener {
-        fun itemClickedClicked(view: View, dog: Dog)
+        fun onItemClicked(view: View, dog: Dog)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder =
@@ -45,7 +45,7 @@ class RecyclerAdapter(val callback: RecyclerViewClickListener) : ListAdapter<Dog
                 ViewCompat.setTransitionName(item_container, dog.imageUrl)
                 breed_name.text = dog.breed?.capitalize()
                 dog.imageUrl?.let { it1 -> ImageLoader.loadImage(containerView.context, it1, image_thumbnail) }
-                setOnClickListener { callback.itemClickedClicked(itemView, dog) }
+                setOnClickListener { callback.onItemClicked(itemView, dog) }
 //                if (dog.isTopDog) {
 //                    card_layout.setCardBackgroundColor(Color.MAGENTA)
 //                } else {

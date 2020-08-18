@@ -98,7 +98,7 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
         animation_loading.playAnimation()
     }
 
-    override fun itemClickedClicked(view: View, dog: Dog) {
+    override fun onItemClicked(view: View, dog: Dog) {
 
         exitTransition = Hold().apply {
             duration = resources.getInteger(R.integer.motion_duration_large).toLong()

@@ -3,23 +3,23 @@
 <resources>
 
     <!--Shape-->
-    <style name="ShapeAppearance.Zimgur.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+    <style name="ShapeAppearance.Paws.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/Zimgur_small_component_corner_radius</item>
+        <item name="cornerSize">@dimen/Paws_small_component_corner_radius</item>
     </style>
 
-    <style name="ShapeAppearance.Zimgur.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+    <style name="ShapeAppearance.Paws.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/Zimgur_medium_component_corner_radius</item>
+        <item name="cornerSize">@dimen/Paws_medium_component_corner_radius</item>
     </style>
 
-    <style name="ShapeAppearance.Zimgur.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+    <style name="ShapeAppearance.Paws.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/Zimgur_large_component_corner_radius</item>
+        <item name="cornerSize">@dimen/Paws_large_component_corner_radius</item>
     </style>
 
-    <dimen name="Zimgur_small_component_corner_radius">24dp</dimen>
-    <dimen name="Zimgur_medium_component_corner_radius">5dp</dimen>
-    <dimen name="Zimgur_large_component_corner_radius">22dp</dimen>
+    <dimen name="Paws_small_component_corner_radius">24dp</dimen>
+    <dimen name="Paws_medium_component_corner_radius">5dp</dimen>
+    <dimen name="Paws_large_component_corner_radius">22dp</dimen>
 
 </resources>
