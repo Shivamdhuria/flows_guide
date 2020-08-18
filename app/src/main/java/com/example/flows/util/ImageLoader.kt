@@ -15,93 +15,53 @@ internal object ImageLoader {
 
     fun loadImage(context: Context, url: String, imageView: ImageView, radius: Int = 1) {
         Glide.with(context)
-                .load(url)
-                .fitCenter()
-                .transition(withCrossFade())
-                .transform(MultiTransformation(CenterCrop(), RoundedCorners(radius)))
-                .into(imageView)
+            .load(url)
+            .fitCenter()
+            .transition(withCrossFade())
+            .transform(MultiTransformation(CenterCrop(), RoundedCorners(radius)))
+            .into(imageView)
     }
 
     fun loadImage(context: Context, file: File, imageView: ImageView, radius: Int = 1) {
         Glide.with(context)
-                .load(file)
-                .transition(withCrossFade())
-                .transform(MultiTransformation(CenterCrop(), RoundedCorners(radius)))
-                .into(imageView)
+            .load(file)
+            .transition(withCrossFade())
+            .transform(MultiTransformation(CenterCrop(), RoundedCorners(radius)))
+            .into(imageView)
     }
 
     fun loadImage(context: Context, uri: Uri, imageView: ImageView, radius: Int = 1) {
         Glide.with(context)
-                .load(uri)
-                .transition(withCrossFade())
-                .transform(MultiTransformation(CenterCrop(), RoundedCorners(radius)))
-                .into(imageView)
+            .load(uri)
+            .transition(withCrossFade())
+            .transform(MultiTransformation(CenterCrop(), RoundedCorners(radius)))
+            .into(imageView)
     }
 
     fun loadImage(context: Context, resId: Int, imageView: ImageView, radius: Int = 1) {
         Glide.with(context)
-                .load(resId)
-                .transition(withCrossFade())
-                .transform(MultiTransformation(CenterCrop(), RoundedCorners(radius)))
-                .into(imageView)
+            .load(resId)
+            .transition(withCrossFade())
+            .transform(MultiTransformation(CenterCrop(), RoundedCorners(radius)))
+            .into(imageView)
     }
 
     fun loadImageWithoutTransform(context: Context, uri: Uri, imageView: ImageView) {
         Glide.with(context)
-                .load(uri)
-                .transition(withCrossFade())
-                .into(imageView)
+            .load(uri)
+            .transition(withCrossFade())
+            .into(imageView)
     }
 
     fun loadImageWithCircularCrop(context: Context, url: String, imageView: ImageView) {
         Glide.with(context)
-                .load(url)
-                .apply(RequestOptions.circleCropTransform())
-                .transition(withCrossFade())
-                .into(imageView)
+            .load(url)
+            .apply(RequestOptions.circleCropTransform())
+            .transition(withCrossFade())
+            .into(imageView)
     }
-
-//    fun load(context: Context, url: String, imageView: ImageView) {
-//        Glide.with(context)
-//                .asBitmap()
-//                .load(url)
-//                .transition(BitmapTransitionOptions.withCrossFade())
-//                .into(imageView)
-//    }
 
     fun removeCache(context: Context) {
         Glide.get(context).clearMemory()
     }
-
-//    private fun startEnterTransitionAfterLoadingImage(
-//            imageAddress: String,
-//            imageView: ImageView
-//    ) {
-//        Glide.with(this)
-//                .load(imageAddress)
-//                .dontAnimate() // 1
-//                .listener(object : RequestListener<Drawable> { // 2
-//                    override fun onLoadFailed(
-//                            e: GlideException?,
-//                            model: Any?,
-//                            target: com.bumptech.glide.request.target.Target<Drawable>?,
-//                            isFirstResource: Boolean
-//                    ): Boolean {
-//                        startPostponedEnterTransition()
-//                        return false
-//                    }
-//
-//                    override fun onResourceReady(
-//                            resource: Drawable,
-//                            model: Any,
-//                            target: com.bumptech.glide.request.target.Target<Drawable>,
-//                            dataSource: DataSource,
-//                            isFirstResource: Boolean
-//                    ): Boolean {
-//                        startPostponedEnterTransition()
-//                        return false
-//                    }
-//                })
-//                .into(imageView)
-//    }
 }
