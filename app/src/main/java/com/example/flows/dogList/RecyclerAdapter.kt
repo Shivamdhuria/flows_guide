@@ -1,8 +1,8 @@
 package com.example.flows.dogList
 
-import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,18 +11,18 @@ import com.example.flows.dogList.data.Dog
 import com.example.flows.extensions.inflate
 import com.example.flows.util.ImageLoader
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_doggo.view.*
+import kotlinx.android.synthetic.main.item_dog.view.*
 
-class RecyclerAdapter(val callback: RecyclerViewClickListener) : ListAdapter<Dog, RecyclerAdapter.UserDateViewHolder>(UserDataAdapterListDiff()) {
+class RecyclerAdapter(val callback: RecyclerViewClickListener) : ListAdapter<Dog, RecyclerAdapter.DogViewHolder>(UserDataAdapterListDiff()) {
 
     interface RecyclerViewClickListener {
-        fun itemClickedClicked(imageUrl: String, breed: String)
+        fun onItemClicked(view: View, dog: Dog)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserDateViewHolder =
-            UserDateViewHolder(parent.inflate(R.layout.item_doggo))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder =
+            DogViewHolder(parent.inflate(R.layout.item_dog))
 
-    override fun onBindViewHolder(holder: UserDateViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
@@ -37,19 +37,20 @@ class RecyclerAdapter(val callback: RecyclerViewClickListener) : ListAdapter<Dog
         }
     }
 
-    inner class UserDateViewHolder(override val containerView: View) :
-            RecyclerView.ViewHolder(containerView), LayoutContainer {
+    inner class DogViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         fun bind(dog: Dog) {
-            containerView.breed_name.text = dog.breed?.capitalize()
-            dog.imageUrl?.let { it1 -> ImageLoader.loadImageWithCircularCrop(containerView.context, it1, containerView.doggo_image) }
-            if (dog.isTopDog) {
-                this.containerView.card_layout.setCardBackgroundColor(Color.MAGENTA)
-            } else {
-                this.containerView.card_layout.setCardBackgroundColor(containerView.context.getColor(R.color.colorPrimary))
-            }
-            containerView.setOnClickListener {
-                callback.itemClickedClicked(dog.imageUrl.toString(), dog.breed)
+
+            with(containerView) {
+                ViewCompat.setTransitionName(item_container, dog.imageUrl)
+                breed_name.text = dog.breed?.capitalize()
+                dog.imageUrl?.let { it1 -> ImageLoader.loadImage(containerView.context, it1, image_thumbnail) }
+                setOnClickListener { callback.onItemClicked(itemView, dog) }
+//                if (dog.isTopDog) {
+//                    card_layout.setCardBackgroundColor(Color.MAGENTA)
+//                } else {
+//                    card_layout.setCardBackgroundColor(containerView.context.getColor(R.color.colorPrimary))
+//                }
             }
         }
     }

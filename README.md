@@ -10,6 +10,7 @@ The project uses [DogApi](https://dog.ceo/dog-api/documentation/) for retrofit r
   - Room, Retrofit, OkHTTP, Jetpack Componenets
 
 # Medium Articles
+## In Sequence
 
   | Medium Article  | Github Branch|
 | ------ | ------ |

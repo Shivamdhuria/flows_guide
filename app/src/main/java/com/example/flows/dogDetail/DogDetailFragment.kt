@@ -5,7 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.flows.R
+import com.example.flows.extensions.themeColor
 import com.example.flows.util.ImageLoader
+import com.google.android.material.transition.MaterialContainerTransform
 import kotlinx.android.synthetic.main.dog_detail_fragment.*
 
 // Because you added androidx.navigation:navigation-fragment-ktx, you’re now able to set the
@@ -14,14 +16,22 @@ class DogDetailFragment : Fragment(R.layout.dog_detail_fragment) {
 
     private val args: DogDetailFragmentArgs by navArgs()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        loadLayout()
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        sharedElementEnterTransition = MaterialContainerTransform().apply {
+            drawingViewId = R.id.nav_host_fragment
+            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+            isElevationShadowEnabled = true
+            setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
+        }
+        super.onCreate(savedInstanceState)
     }
 
-    private fun loadLayout() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val (imageUrl, breed) = args
-        ImageLoader.loadImageWithCircularCrop(requireContext(), imageUrl, image)
-        name.text = breed
+        ImageLoader.loadImage(requireContext(), imageUrl, image_dog_detail)
+        textview_dog_breed.text = breed
+        detail_container.transitionName = imageUrl
     }
 }

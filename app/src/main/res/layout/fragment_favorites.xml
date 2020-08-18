@@ -16,5 +16,5 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:spanCount="3"
         tools:context="com.raywenderlich.android.episodes.ui.MainActivity"
-        tools:listitem="@layout/item_doggo" />
+        tools:listitem="@layout/item_dog" />
 </RelativeLayout>

@@ -1,12 +1,18 @@
 <resources>
 
-    <!-- Declare custom theme attributes that allow changing which styles are
-         used for button bars depending on the API level.
-         ?android:attr/buttonBarStyle is new as of API 11 so this is
-         necessary to support previous API levels. -->
     <declare-styleable name="ButtonBarContainerTheme">
         <attr name="metaButtonBarStyle" format="reference" />
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
+
+    <!--A variant of primarySurface which corresponds to colorPrimaryVariant in light theme-->
+    <!--and colorSurface in dark theme-->
+    <attr name="colorPrimarySurfaceVariant" format="color" />
+
+    <!--Emphasis values are used in combination with each "on" color to create three available -->
+    <!--levels of emphasis for text and content.-->
+    <attr name="emphasisHighAlpha" format="float"/>
+    <attr name="emphasisMediumAlpha" format="float"/>
+    <attr name="emphasisDisabledAlpha" format="float"/>
 
 </resources>

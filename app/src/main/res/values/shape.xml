@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!--Shape-->
+    <style name="ShapeAppearance.Paws.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/Paws_small_component_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.Paws.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/Paws_medium_component_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.Paws.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/Paws_large_component_corner_radius</item>
+    </style>
+
+    <dimen name="Paws_small_component_corner_radius">24dp</dimen>
+    <dimen name="Paws_medium_component_corner_radius">5dp</dimen>
+    <dimen name="Paws_large_component_corner_radius">22dp</dimen>
+
+</resources>

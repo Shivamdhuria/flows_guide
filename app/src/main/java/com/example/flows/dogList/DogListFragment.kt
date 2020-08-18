@@ -3,14 +3,20 @@ package com.example.flows.dogList
 import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.example.flows.R
+import com.example.flows.dogList.data.Dog
 import com.example.flows.error.ResultWrapper
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.transition.Hold
+import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.dog_list_fragment.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -24,6 +30,9 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        postponeEnterTransition()
+        view.doOnPreDraw { startPostponedEnterTransition() }
+
         recycler.adapter = adapter
         subscribeObservers()
         initListeners()
@@ -68,7 +77,6 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
                 is ResultWrapper.NetworkError -> showError()
                 is ResultWrapper.Success<*> -> {
                     animation_loading.visibility = View.INVISIBLE
-                    scroll_root.fullScroll(View.FOCUS_DOWN)
                 }
             }
         })
@@ -90,54 +98,21 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
         animation_loading.playAnimation()
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.fetchDogsFlow()
+    override fun onItemClicked(view: View, dog: Dog) {
+
+        exitTransition = Hold().apply {
+            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+        }
+
+        reenterTransition = MaterialElevationScale(true).apply {
+            duration = resources.getInteger(R.integer.motion_duration_small).toLong()
+        }
+        val toDogDetailsFragment = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(dog.imageUrl.toString(), dog.breed)
+        val extras = FragmentNavigatorExtras(view to dog.imageUrl.toString())
+        navigate(toDogDetailsFragment, extras)
     }
 
-    override fun itemClickedClicked(imageUrl: String, breed: String) {
-        val toDogDetailsFragment = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(imageUrl, breed)
-        navigate(toDogDetailsFragment)
-    }
-
-//    inner class ActionModeCallback : ActionMode.Callback {
-//        var shouldResetRecyclerView = true
-//        override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
-//            when (item?.getItemId()) {
-//                R.id.action_delete -> {
-//                    shouldResetRecyclerView = false
-//                    myAdapter?.deleteSelectedIds()
-//                    actionMode?.setTitle("") //remove item count from action mode.
-//                    actionMode?.finish()
-//                    return true
-//                }
-//            }
-//            return false
-//        }
-//
-//        override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-//            val inflater = mode?.getMenuInflater()
-//            inflater?.inflate(R.menu.action_mode_menu, menu)
-//            return true
-//        }
-//
-//        override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-//            menu?.findItem(R.id.action_delete)?.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
-//            return true
-//        }
-//
-//        override fun onDestroyActionMode(mode: ActionMode?) {
-//            if (shouldResetRecyclerView) {
-//                adapter?.selectedIds?.clear()
-//                adapter?.notifyDataSetChanged()
-//            }
-//            isMultiSelectOn = false
-//            actionMode = null
-//            shouldResetRecyclerView = true
-//        }
-//    }
-
-    private fun navigate(destination: NavDirections) = with(findNavController()) {
-        currentDestination?.getAction(destination.actionId)?.let { navigate(destination) }
+    private fun navigate(destination: NavDirections, extraInfo: FragmentNavigator.Extras) = with(findNavController()) {
+        currentDestination?.getAction(destination.actionId)?.let { navigate(destination, extraInfo) }
     }
 }
