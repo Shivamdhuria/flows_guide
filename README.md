@@ -1,20 +1,17 @@
-# Paws
-<img src="./previews/Readme.png" width="600">
+<p align="center">
+<img src="./previews/logo.png" width="150">
+</p>
 
-An Android Application written purely in Kotlin utilizing all the latest tech in Android. The project uses Material Design guidelines,  MVVM architecture, Hilt for Dependency Injection and uses Room for an offline- first approach.
+<p align="center">
+An Android Application written purely in Kotlin utilizing all the latest tech in Android. <br> The project uses Material Design guidelines,  MVVM architecture, Hilt for Dependency Injection and uses Room for an offline- first approach.
+  </p>
 
-![alt text](https://github.com/Shivamdhuria/flows_guide/blob/master/previews/Readme.png=10x)
+<p align="center">
+<img src="./previews/introCompressed.jpg" width="700">
+</p>
 
 
-
-  - Uses coroutines
-  - Flows on top of that
-  - Channesl for downstream communication
-  - MVVM architecture
-  - Room, Retrofit, OkHTTP, Jetpack Componenets
-
-# Medium Articles
-## In Sequence
+# Medium Articles 
 
   | Medium Article  | Github Branch|
 | ------ | ------ |
@@ -24,6 +21,27 @@ An Android Application written purely in Kotlin utilizing all the latest tech in
 | [Adding animations to your Android application using Lottie library](https://medium.com/@shivamdhuria/adding-animations-to-your-android-application-using-lottie-library-fa2d7197e23b) | [adding_animation](https://github.com/Shivamdhuria/flows_guide/tree/add_animation_final) |
 | Adding Stetho (Medium article in progress) | [adding_stetho](https://github.com/Shivamdhuria/flows_guide/tree/adding_stetho) |
 | Migrating to Single Activity architecture with Navigation Components (No Article ❌) | [migrate_to_single_activity_and_navigation_component](https://github.com/Shivamdhuria/flows_guide/tree/migrate_to_single_activity_and_navigation_component) |
+| [Adding amazing transitions to your Android App easily using Material Motion](https://medium.com/@shivamdhuria/adding-amazing-transitions-to-your-android-app-easily-using-material-motion-f0cd92463b39) | [added_transition_using_material_motion](https://github.com/Shivamdhuria/flows_guide/tree/added_transition_using_material_motion) |
+
+
+# Tech Stack
+<img src="/previews/transition.gif" align="right" width="20%"/>
+
+- [Kotlin](https://kotlinlang.org/)  
+- [Coroutines](https://github.com/Kotlin/kotlinx.coroutines)  
+- [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
+- Dagger-Hilt (alpha) for dependency injection.
+- JetPack Components
+- Architecture
+  - MVVM Architecture 
+  - Repository pattern
+  - Database Cache as Single Source of Truth
+  
+  
+  # Libraries
+- [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
+- [Moshi](https://github.com/square/moshi/) - A modern JSON library for Kotlin and Java.
+- [Glide](https://github.com/bumptech/glide), [GlidePalette](https://github.com/florent37/GlidePalette) - loading images.
 
 
 
