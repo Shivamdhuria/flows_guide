@@ -7,8 +7,13 @@
     android:title="All Dogs"
     app:showAsAction="ifRoom" />
   <item
+      android:id="@+id/search_dog"
+      android:icon="@android:drawable/ic_menu_search"
+      android:title="Search"
+      app:showAsAction="ifRoom" />
+  <item
     android:id="@+id/favorites"
     android:icon="@drawable/ic_favorite_white_24dp"
-    android:title="Favorrites"
+    android:title="Favorites"
     app:showAsAction="ifRoom" />
 </menu>

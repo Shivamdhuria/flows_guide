@@ -2,7 +2,6 @@ package com.example.flows.dogList
 
 import android.os.Bundle
 import android.view.View
-import android.widget.SearchView
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,6 +16,7 @@ import com.example.flows.error.ResultWrapper
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialElevationScale
+import com.google.android.material.transition.MaterialFadeThrough
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.dog_list_fragment.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -28,11 +28,17 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
     private val viewModel: DogListViewModel by viewModels()
     private val adapter by lazy(NONE) { RecyclerAdapter(this) }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialFadeThrough().apply {
+            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
-
         recycler.adapter = adapter
         subscribeObservers()
         initListeners()
@@ -41,18 +47,18 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
 
     private fun initListeners() {
 
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-                androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let { viewModel.setSearchQuery(it) }
-                return true
-            }
-        }
-        )
+        // search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+        //     androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        //     override fun onQueryTextSubmit(query: String?): Boolean {
+        //         return true
+        //     }
+        //
+        //     override fun onQueryTextChange(newText: String?): Boolean {
+        //         newText?.let { viewModel.setSearchQuery(it) }
+        //         return true
+        //     }
+        // }
+        // )
         loadMore.setOnClickListener {
             viewModel.fetchDogsFlow()
         }
@@ -107,12 +113,18 @@ class DogListFragment : Fragment(R.layout.dog_list_fragment), RecyclerAdapter.Re
         reenterTransition = MaterialElevationScale(true).apply {
             duration = resources.getInteger(R.integer.motion_duration_small).toLong()
         }
-        val toDogDetailsFragment = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(dog.imageUrl.toString(), dog.breed)
+        val toDogDetailsFragment =
+            DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(
+                dog.imageUrl.toString(),
+                dog.breed
+            )
         val extras = FragmentNavigatorExtras(view to dog.imageUrl.toString())
         navigate(toDogDetailsFragment, extras)
     }
 
-    private fun navigate(destination: NavDirections, extraInfo: FragmentNavigator.Extras) = with(findNavController()) {
-        currentDestination?.getAction(destination.actionId)?.let { navigate(destination, extraInfo) }
-    }
+    private fun navigate(destination: NavDirections, extraInfo: FragmentNavigator.Extras) =
+        with(findNavController()) {
+            currentDestination?.getAction(destination.actionId)
+                ?.let { navigate(destination, extraInfo) }
+        }
 }
