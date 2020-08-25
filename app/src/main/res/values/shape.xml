@@ -19,7 +19,7 @@
     </style>
 
     <dimen name="Paws_small_component_corner_radius">24dp</dimen>
-    <dimen name="Paws_medium_component_corner_radius">5dp</dimen>
+    <dimen name="Paws_medium_component_corner_radius">50dp</dimen>
     <dimen name="Paws_large_component_corner_radius">22dp</dimen>
 
 </resources>
