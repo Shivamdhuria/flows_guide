@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".main.MainActivity">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:theme="@style/AppSearchView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryHint="Search Breed" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:nestedScrollingEnabled="true"
+            android:paddingStart="@dimen/card_side_margin"
+            android:paddingEnd="@dimen/card_side_margin"
+            android:transitionGroup="true"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:spanCount="2"
+            tools:context="com.raywenderlich.android.episodes.ui.MainActivity"
+            tools:layout_editor_absoluteX="16dp"
+            tools:listitem="@layout/item_dog" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

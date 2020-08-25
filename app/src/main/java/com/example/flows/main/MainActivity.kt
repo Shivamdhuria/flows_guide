@@ -22,11 +22,13 @@ class MainActivity : AppCompatActivity() {
 
     private val navController by lazy { findNavController(R.id.nav_host_fragment) }
     private val appBarConfiguration by lazy {
-        AppBarConfiguration(topLevelDestinationIds =
-        setOf(
+        AppBarConfiguration(
+            topLevelDestinationIds =
+            setOf(
                 R.id.dogListFragment,
-                R.id.favoritesFragment
-        )
+                R.id.favoritesFragment,
+                R.id.searchDogFragment
+            )
         )
     }
 

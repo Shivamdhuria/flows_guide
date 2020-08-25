@@ -26,9 +26,19 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_app" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/menu_bottom_nav" />
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_bottom_nav" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

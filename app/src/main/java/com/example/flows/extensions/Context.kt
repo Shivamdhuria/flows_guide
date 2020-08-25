@@ -18,8 +18,26 @@ fun Context.themeColor(
     @AttrRes themeAttrId: Int
 ): Int {
     return obtainStyledAttributes(
-            intArrayOf(themeAttrId)
+        intArrayOf(themeAttrId)
     ).use {
         it.getColor(0, Color.MAGENTA)
     }
 }
+
+// fun View.getActivity(): AppCompatActivity? {
+//     var context = this.context
+//     while (context is ContextWrapper) {
+//         if (context is AppCompatActivity) {
+//             return context
+//         }
+//         context = context.baseContext
+//     }
+//     return null
+// }
+//
+// fun SearchView.showKeyboard() {
+//     if (requestFocus()) {
+//         (getActivity()?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager)
+//             .showSoftInput(this, SHOW_IMPLICIT)
+//     }
+// }

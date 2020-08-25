@@ -7,5 +7,6 @@
 
     <include app:graph="@navigation/favorites" />
     <include app:graph="@navigation/dog_list" />
+    <include app:graph="@navigation/search_dog" />
 
 </navigation>
