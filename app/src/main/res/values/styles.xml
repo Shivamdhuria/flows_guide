@@ -13,6 +13,11 @@
     <style name="CircleImageStyle" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
-</style>
+    </style>
+
+    <style name="ShapeHeader" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+    </style>
 
 </resources>
