@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/dogDetailFragment"
-        android:name="com.example.flows.dogDetail.DogDetailFragment"
+        android:name="com.elixer.paws.dogDetail.DogDetailFragment"
         android:label="Dog Details"
         tools:layout="@layout/dog_detail_fragment" >
         <argument
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchDogFragment"
-        android:name="com.example.flows.search.SearchDogFragment"
+        android:name="com.elixer.paws.search.SearchDogFragment"
         android:label="SearchDogFragment" >
         <action
             android:id="@+id/action_searchDogFragment_to_dogDetailFragment"

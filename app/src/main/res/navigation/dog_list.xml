@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/dogListFragment"
-        android:name="com.example.flows.dogList.DogListFragment"
+        android:name="com.elixer.paws.dogList.DogListFragment"
         android:label="All Dogs"
         tools:layout="@layout/dog_list_fragment" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/dogDetailFragment"
-        android:name="com.example.flows.dogDetail.DogDetailFragment"
+        android:name="com.elixer.paws.dogDetail.DogDetailFragment"
         android:label="Dog Details"
         tools:layout="@layout/dog_detail_fragment" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.example.flows.about.AboutFragment"
+        android:name="com.elixer.paws.about.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
 </navigation>

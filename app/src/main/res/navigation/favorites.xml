@@ -6,7 +6,7 @@
     app:startDestination="@id/favoritesFragment">
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.example.flows.favorite.FavoritesFragment"
+        android:name="com.elixer.paws.favorite.FavoritesFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorites" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/dogDetailFragment2"
-        android:name="com.example.flows.dogDetail.DogDetailFragment"
+        android:name="com.elixer.paws.dogDetail.DogDetailFragment"
         android:label="dog_detail_fragment"
         tools:layout="@layout/dog_detail_fragment" />
 </navigation>
