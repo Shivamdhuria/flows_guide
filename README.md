@@ -42,11 +42,10 @@ Follow me on [Medium](https://medium.com/@shivamdhuria) for latest articles.
   
   
 ## Roadmap (Features to be added )
-  - Shared Element Transition from FAB to SEARCH fragment screen
-  - Using Color Pallette API for setting background color of bottom sheet in Dog Details Frag.
-  - Recycler - Selection library with contexual Action mode for setting a Dog as Favorite
-  - Using Paging 3 library 
-  - Update this Readme for APp screenshots, credits, libraries used and contribution.
+- Using Jetpack compose
+- Animations using Jetpack compose
+- Using fastlane for distribution
+- Using Play Core Library for In App Updates
   
   
 ### Find this repository useful? :heart:
